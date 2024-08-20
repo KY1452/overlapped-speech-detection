@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Inference Module &mdash; klass-osd 1.0.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="_static/jquery.js?v=5d32c60e"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js?v=af2ce170"></script>
+        <script src="_static/doctools.js?v=888ff710"></script>
+        <script src="_static/sphinx_highlight.js?v=4825356b"></script>
+        <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="_static/copybutton.js?v=f281be69"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Error Analysis" href="readme-error_analysis.html" />
+    <link rel="prev" title="Environment Setup for Inference Module" href="readme-env_setup_inference.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            klass-osd
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="readme-toc.html">Table of Contents</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="readme-toc.html#data-pipeline-model-training">Data Pipeline &amp; Model Training</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="readme-toc.html#inference-module">Inference Module</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="readme-env_setup_inference.html">Environment Setup for Inference Module</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Inference Module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#overview">Overview</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#architecture-diagram">Architecture diagram</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#files-folder-structure">Files/Folder Structure</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#design-considerations">Design considerations</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#how-to-run">How to Run</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#configuration">Configuration</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#server-configuration">Server Configuration</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#volume-mount-storage">Volume Mount Storage</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#inference-endpoints">Inference Endpoints</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id1">Overview</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#inference-endpoints-src-klass-osd-fastapi">Inference Endpoints (src.klass.osd_fastapi)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="readme-toc.html#others">Others</a></li>
+<li class="toctree-l2"><a class="reference internal" href="readme-toc.html#reference-documentation">Reference Documentation</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">klass-osd</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="readme-toc.html">Table of Contents</a></li>
+      <li class="breadcrumb-item active">Inference Module</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/readme-inference_module.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="inference-module">
+<span id="readme-inference-module"></span><h1>Inference Module<a class="headerlink" href="#inference-module" title="Permalink to this heading"></a></h1>
+<p>This section provides an overview of the model serving module, its architecture, design considerations, how to perform batch inference, access API documentation, and configure the server using Docker-compose.</p>
+<section id="overview">
+<h2>Overview<a class="headerlink" href="#overview" title="Permalink to this heading"></a></h2>
+<p>The Klass OSD model service is designed to analyze audio data in batch mode, identifying overlapped speech within audio segments. This service is optimized for batch inference, as the workload can be heavy and may not be instantaneous.</p>
+</section>
+<hr class="docutils" />
+<section id="architecture-diagram">
+<h2>Architecture diagram<a class="headerlink" href="#architecture-diagram" title="Permalink to this heading"></a></h2>
+<img alt="Inference Module Diagram" src="_images/inference_app_architecture.png" />
+<p>The architecture diagram illustrates the high-level components and data flow of the OSD model service.</p>
+<p>The different components are launched in Docker containers using Docker-compose, and this can be configured to scale up for heavier workloads (for example, adding more worker containers so more inference tasks can be handled in parallel).</p>
+</section>
+<hr class="docutils" />
+<section id="files-folder-structure">
+<h2>Files/Folder Structure<a class="headerlink" href="#files-folder-structure" title="Permalink to this heading"></a></h2>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>└── 📁klass2
+     └── docker-compose.yml
+     └── Dockerfile
+     └── .env
+     └── requirements-fastapi.txt
+     └── 📁conf
+         └── 📁base
+              └── fastapi_deploy.yaml
+              └── logging.yml
+              └── parameters.yaml
+              └── uvicorn_cfg.ini
+         └── 📁local
+              └── .gitkeep
+     └── 📁osd_fastapi
+         └── main.py
+         └── worker.py
+         └── __init__.py
+         └── 📁src
+              └── checkpoint_loader.py
+              └── generate_inference_rttm.py
+              └── utils.py
+              └── wavlm_inference.py
+              └── __init__.py
+              └── 📁models
+                   └── wavlm.py
+                   └── __init__.py
+         └── 📁static
+              └── bootstrap.min.css
+              └── favicon.ico
+              └── Klass-favicon.ico
+              └── main.css
+              └── main.js
+         └── 📁templates
+              └── footer.html
+              └── home.html
+              └── infer.html
+              └── _base.html
+└── 📁vol_mount
+     └── 📁audio
+         └── test_audio_2.wav
+         └── 📁audio_folder
+              └── test_audio_1.wav
+     └── 📁db
+         └── 📁flower_dashboard
+         └── 📁rabbitmq_broker
+         └── 📁redis_results_backend
+     └── 📁logs
+         └── celery_worker.log
+         └── flower.log
+     └── 📁model_checkpoints
+         └── 📁wavlm
+              └── config.json
+              └── model.safetensors
+              └── preprocessor_config.json
+              └── training_args.bin
+         └── 📁wavlm_aug
+              └── config.json
+              └── model.safetensors
+              └── preprocessor_config.json
+         └── 📁wavlm_both
+              └── config.json
+              └── model.safetensors
+              └── preprocessor_config.json
+              └── training_args.bin
+     └── 📁output_rttm
+         └── 📁wavlm-91ce9abf-f886-4bdb-94dd-5a0f30796f6b
+              └── test_audio_1.rttm
+              └── test_audio_2.rttm
+         └── 📁wavlm_aug-69396066-2757-4a57-ad6a-60919350d852
+              └── test_audio_1.rttm
+              └── test_audio_2.rttm
+     └── 📁output_seg
+         └── 📁wavlm-91ce9abf-f886-4bdb-94dd-5a0f30796f6b
+              └──  test_audio_1.seg
+              └── test_audio_2.seg
+         └── 📁wavlm_aug-69396066-2757-4a57-ad6a-60919350d852
+              └── test_audio_1.seg
+              └── test_audio_2.seg
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">Dockerfile</span></code> - Dockerfile to build image of repo</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">docker-compose.yml</span></code> - Docker-compose to specify multi-container set up</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">.env</span></code> - Dotenv file containing user/password for RabbitMQ</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">requirements-fastapi.txt</span></code> - pip requirements for inference module</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">conf/base/fastapi_deploy.yaml</span></code> - main configuration file for inference module</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">conf/base/uvicorn_cfg.ini</span></code> - config file to specify logging when starting uvicorn server</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">osd_fastapi/main.py</span></code> - main FastAPI app</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">osd_fastapi/worker.py</span></code> - worker nodes to be spun up using Celery</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">osd_fastapi/src/checkpoint_loader.py</span></code> - both main/worker use this to read checkpoint files</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">osd_fastapi/src/utils.py</span></code> - utility module for loading YAML configuration files, validating file paths, sorting tasks by timestamp, parsing wave file paths, and formatting task result presentations.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">osd_fastapi/src/models</span></code> - folder containing WavLM model class and inference method</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">osd_fastapi/static/</span></code> - folder containing static assets (css, favicon…)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">osd_fastapi/templates/</span></code> - folder containing html/jinja2 templates</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">volume_mount/model_checkpoints/wavlm/</span></code> - folder containing checkpoints of model trained on clean libri2mix audio files</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">volume_mount/model_checkpoints/wavlm_aug/</span></code> - folder containing checkpoints of model trained on 70% clean libri2mix audio files and 30% augmented audio files</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">volume_mount/model_checkpoints/wavlm_both/</span></code> - folder containing checkpoints of model trained on libri2mix audio files with noise</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="design-considerations">
+<h2>Design considerations<a class="headerlink" href="#design-considerations" title="Permalink to this heading"></a></h2>
+<ul>
+<li><p><strong>Batch Inference:</strong> The OSD model is optimized for batch inference, allowing the processing of large audio files that may not be instantaneous.</p></li>
+<li><p><strong>CPU Processing:</strong> The model is designed to run inference on CPU resources, not GPU.</p></li>
+<li><p><strong>Volume Mounting:</strong> Input and output files are managed through volume mounting. Instead of sending audio wave files via requests, file paths are sent, and results are stored on mounted volumes.</p></li>
+<li><p><strong>Flexible Inference:</strong> Given a list of input audio files in a batch that could contain missing or invalid files, the inference will still proceed with the valid files, and return notifications for files that had errors.</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><strong>If all audio file paths given are not found</strong>, the POST <code class="docutils literal notranslate"><span class="pre">inference</span></code> endpoint will immediately return a JSON response, and no task is created.</p></li>
+<li><p><strong>If file paths contain a mixture of valid files, missing files, and erroneous files (inference runs resulting in an error)</strong>, the JSON response will initially return that a task was created with the non-missing files. When task is complete and client accesses the results, each audio file will have its own <code class="docutils literal notranslate"><span class="pre">{</span> <span class="pre">'status'</span> <span class="pre">:</span> <span class="pre">'SUCCESS'</span> <span class="pre">}</span></code> for completed files, and <code class="docutils literal notranslate"><span class="pre">{</span> <span class="pre">'status'</span> <span class="pre">:</span> <span class="pre">'ERROR:</span> <span class="pre">&lt;Error</span> <span class="pre">Message&gt;'</span> <span class="pre">}</span></code> for erroneous files for which inference could not be completed.</p></li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="how-to-run">
+<h2>How to Run<a class="headerlink" href="#how-to-run" title="Permalink to this heading"></a></h2>
+<p>If you have not done so, set up the environment and inference package as detailed in <a class="reference internal" href="readme-env_setup_inference.html#readme-env-setup-inference"><span class="std std-ref">Environment Setup: Inference Module</span></a>.</p>
+<p>Once you have run <code class="docutils literal notranslate"><span class="pre">docker-compose</span> <span class="pre">up</span> <span class="pre">-d</span></code> or <code class="docutils literal notranslate"><span class="pre">docker-compose</span> <span class="pre">up</span> <span class="pre">-d</span> <span class="pre">--build</span></code>, and the containers have spun up, you can check this by running <code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">ps</span></code> or viewing the containers tab if you are running Docker Desktop.</p>
+<p>You may access the inference module via <code class="docutils literal notranslate"><span class="pre">http://localhost:8004/</span></code> from a browser to access the inference request form.</p>
+<p>Endpoint documentation is available below and at <code class="docutils literal notranslate"><span class="pre">http://localhost:8004/docs</span></code>. Curl requests examples are also available there.</p>
+<p>The inference module should already be pre-configured for normal usage. I.e, if you followed our steps during the <a class="reference internal" href="readme-env_setup_inference.html#readme-env-setup-inference"><span class="std std-ref">environment setup</span></a>, there should be no need to edit any configuration.</p>
+</section>
+<hr class="docutils" />
+<section id="configuration">
+<h2>Configuration<a class="headerlink" href="#configuration" title="Permalink to this heading"></a></h2>
+<p>Edit <code class="docutils literal notranslate"><span class="pre">./klass/conf/base/fastapi_deploy.yaml</span></code> if you would like to change</p>
+<ul class="simple">
+<li><p>the relative folder locations for <code class="docutils literal notranslate"><span class="pre">model_path</span></code> and <code class="docutils literal notranslate"><span class="pre">output_basepath</span></code> in the volume mount.</p></li>
+<li><p>the time zone. The task timestamps are all saved as UTC in the backend by default. This setting formats them into your local time zone for viewing of tasks/results. The <code class="docutils literal notranslate"><span class="pre">timezone</span></code> setting is set to <code class="docutils literal notranslate"><span class="pre">'Asia/Singapore'</span></code> by default. Refer to list of <a class="reference external" href="https://gist.github.com/heyalexej/8bf688fd67d7199be4a1682b3eec7568">pytz timezones</a> for other options.</p></li>
+</ul>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="c1">##### fastapi_deploy.yaml #####</span>
+
+<span class="c1"># leave this alone, this should match the guest mount path as spec&#39;ed in</span>
+<span class="c1"># `docker-compose.yml` for both `web` and `worker` container nodes</span>
+<span class="nt">vol_mount_path</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;/usr/src/app/vol_mount&quot;</span>
+
+<span class="c1"># where should inference models be read from</span>
+<span class="c1"># this is relative and appended to the `vol_mount_path`</span>
+<span class="nt">model_path</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;model_checkpoints&quot;</span>
+
+<span class="c1"># where should inference output rttms and segments be saved to</span>
+<span class="c1"># this is relative and appended to the `vol_mount_path`</span>
+<span class="nt">output_basepath_rttm</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;output_rttm&quot;</span>
+<span class="nt">output_basepath_seg</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;output_seg&quot;</span>
+
+<span class="c1"># Set this to reflect time correctly. Refer to pytz.timezone for zone info</span>
+<span class="nt">timezone</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;Asia/Singapore&#39;</span>
+</pre></div>
+</div>
+</section>
+<hr class="docutils" />
+<section id="server-configuration">
+<h2>Server Configuration<a class="headerlink" href="#server-configuration" title="Permalink to this heading"></a></h2>
+<p>The inference module has already been pre-configured for normal usage.</p>
+<p>Edit <code class="docutils literal notranslate"><span class="pre">docker-compose.yml</span></code> if you would like to make any changes, for example to scale and add more worker containers in the deployment.</p>
+<p>Below is a list of some possible configuration changes you might like to apply:</p>
+<section id="change-volume-mount-point">
+<h3>Change Volume Mount Point<a class="headerlink" href="#change-volume-mount-point" title="Permalink to this heading"></a></h3>
+<p>For each of the containers in <code class="docutils literal notranslate"><span class="pre">docker-compose.yml</span></code>, they all specify mount points, for e.g.:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">volumes</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">../vol_mount:/usr/src/app/vol_mount</span>
+
+<span class="c1"># or</span>
+
+<span class="nt">volumes</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">../vol_mount/db/redis_results_backend:/data</span>
+</pre></div>
+</div>
+<p>where it is <code class="docutils literal notranslate"><span class="pre">&lt;host</span> <span class="pre">mount</span> <span class="pre">path&gt;:&lt;container</span> <span class="pre">mount</span> <span class="pre">path&gt;</span></code>. Edit <code class="docutils literal notranslate"><span class="pre">&lt;host</span> <span class="pre">mount</span> <span class="pre">path&gt;</span></code> if you wish to use a different path.</p>
+</section>
+<section id="change-host-port">
+<h3>Change Host Port<a class="headerlink" href="#change-host-port" title="Permalink to this heading"></a></h3>
+<p>The application is accessible via <code class="docutils literal notranslate"><span class="pre">http://localhost:8004</span></code> by default. If you prefer to use another port, change line 8 in <code class="docutils literal notranslate"><span class="pre">docker-compose.yml</span></code>:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;3.3&#39;</span>
+
+<span class="nt">services</span><span class="p">:</span>
+<span class="nt">web</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">build</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">.</span>
+<span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">klass2-dashboard:latest</span>
+<span class="w">    </span><span class="nt">ports</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">8004:8000</span><span class="w">         </span><span class="c1"># change 8004 to your preferred port</span>
+</pre></div>
+</div>
+</section>
+<section id="change-broker-user-password">
+<h3>Change Broker User/Password<a class="headerlink" href="#change-broker-user-password" title="Permalink to this heading"></a></h3>
+<p>Edit <code class="docutils literal notranslate"><span class="pre">.env</span></code> if you would like to change the user and password used for administrating the RabbitMQ broker. See <a class="reference internal" href="readme-env_setup_inference.html#readme-01-env-setup-dotenv"><span class="std std-ref">Dotenv file</span></a></p>
+</section>
+</section>
+<hr class="docutils" />
+<section id="volume-mount-storage">
+<h2>Volume Mount Storage<a class="headerlink" href="#volume-mount-storage" title="Permalink to this heading"></a></h2>
+<p>The inference module (Docker-compose setup) makes use of a volume mount on the local file system, in order to:</p>
+<ul class="simple">
+<li><p>access audio files needed to run inference on,</p></li>
+<li><p>store generated RTTM annotation files for each audio file inferred,</p></li>
+<li><p>persist task states and task results</p></li>
+<li><p>application logs</p></li>
+</ul>
+<p>This should have been set up prior to running the deployment, as detailed in <a class="reference internal" href="readme-env_setup_inference.html#readme-env-setup-inference"><span class="std std-ref">Environment Setup: Inference Module</span></a>.</p>
+<section id="model-checkpoints">
+<h3>Model Checkpoints<a class="headerlink" href="#model-checkpoints" title="Permalink to this heading"></a></h3>
+<p>Place model checkpoints that you wish to configure for inference tasks in <code class="docutils literal notranslate"><span class="pre">./vol_mount/model_checkpoints</span></code>.</p>
+</section>
+<section id="audio-files-for-inference">
+<h3>Audio Files for Inference<a class="headerlink" href="#audio-files-for-inference" title="Permalink to this heading"></a></h3>
+<p>Place audio files you wish to run inference on into <code class="docutils literal notranslate"><span class="pre">./vol_mount/audio</span></code>. For inference on all audio files in an audio folder, you can place it in the <code class="docutils literal notranslate"><span class="pre">audio_folder</span></code> in <code class="docutils literal notranslate"><span class="pre">./vol_mount/audio/audio_folder</span></code>.</p>
+<p>At the inference endpoint, the input file paths are read in relative to <code class="docutils literal notranslate"><span class="pre">./vol_mount/</span></code>. Thus for <code class="docutils literal notranslate"><span class="pre">./vol_mount/audio/file1.wav</span></code>, then it can be passed in as <code class="docutils literal notranslate"><span class="pre">file1.wav</span></code>  at the inference endpoint. Audio folder in <code class="docutils literal notranslate"><span class="pre">./vol_mount/audio/audio_folder</span></code> can be passed in as <code class="docutils literal notranslate"><span class="pre">audio_folder</span></code>  at the inference endpoint for folder.</p>
+</section>
+<section id="result-output-rttm-annotations">
+<h3>Result/Output RTTM Annotations<a class="headerlink" href="#result-output-rttm-annotations" title="Permalink to this heading"></a></h3>
+<p>Once inference tasks are completed, the results are saved as .RTTM and .SEG annotation files in <code class="docutils literal notranslate"><span class="pre">./vol_mount/output_rttm/</span></code> and <code class="docutils literal notranslate"><span class="pre">./vol_mount/output_seg/</span></code>.</p>
+</section>
+<section id="resetting-the-database">
+<h3>Resetting the database<a class="headerlink" href="#resetting-the-database" title="Permalink to this heading"></a></h3>
+<p>To reset the inference application state and clear all past task history and log files, run the following:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>rm<span class="w"> </span>./vol_mount/db/redis_results_backend/*
+$<span class="w"> </span>rm<span class="w"> </span>./vol_mount/db/rabbitmq_broker/*
+$<span class="w"> </span>rm<span class="w"> </span>./vol_mount/db/flower_dashboard/*
+$<span class="w"> </span>rm<span class="w"> </span>./vol_mount/logs/*
+</pre></div>
+</div>
+</section>
+<section id="view-server-logs">
+<h3>View Server Logs<a class="headerlink" href="#view-server-logs" title="Permalink to this heading"></a></h3>
+<p>To view application logs, see <code class="docutils literal notranslate"><span class="pre">./vol_mount/logs/</span></code>. It should contain:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">celery_worker</span><span class="o">.</span><span class="n">log</span>  <span class="c1"># Celery worker container that runs inference task</span>
+<span class="n">uvicorn</span><span class="o">.</span><span class="n">log</span>        <span class="c1"># FastAPI app that handles client requests</span>
+<span class="n">flower</span><span class="o">.</span><span class="n">log</span>         <span class="c1"># Flower dashboard that provides json API to access both task states and inference results</span>
+</pre></div>
+</div>
+<hr class="docutils" />
+</section>
+</section>
+</section>
+<section id="inference-endpoints">
+<span id="readme-02b-inference-endpoints"></span><h1>Inference Endpoints<a class="headerlink" href="#inference-endpoints" title="Permalink to this heading"></a></h1>
+<section id="id1">
+<h2>Overview<a class="headerlink" href="#id1" title="Permalink to this heading"></a></h2>
+<p>The FastAPI model inference app provides a frontend interface for initiating overlapped speech detection inference on a batch of audio files, using specified models loaded on the volume mount folder, as well as endpoints to monitor the tasks and inference results.</p>
+<p>It includes the below routes/endpoints, can be accessed via <code class="docutils literal notranslate"><span class="pre">http://localhost:8004/&lt;endpoint_name&gt;</span></code>, and endpoint documentation is available below or at <code class="docutils literal notranslate"><span class="pre">http://localhost:8004/docs</span></code></p>
+<hr class="docutils" />
+<section id="endpoints-overview">
+<h3>Endpoints Overview<a class="headerlink" href="#endpoints-overview" title="Permalink to this heading"></a></h3>
+<p>Here is an overview of the endpoints available. For detailed documentation, scroll further below.</p>
+<ul class="simple">
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">/</span></code> (Home) :</dt><dd><ul>
+<li><p>Serves an HTML form for batch audio file inference.</p></li>
+<li><p>Users can input a list of audio file paths and choose from a dropdown list of models.</p></li>
+<li><p>Form submission triggers model inference on the provided audio files using the selected model.</p></li>
+<li><p>Alternatively, users can send an inference request via Curl directly to <code class="docutils literal notranslate"><span class="pre">/inference</span></code>.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">/inference</span></code> (Run Inference) :</dt><dd><ul>
+<li><p>Allows users to submit a batch of audio file paths for model inference.</p></li>
+<li><p>Input paths are sent to a Celery task for asynchronous batch processing.</p></li>
+<li><p>Returns a unique task ID for tracking the task progress.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>{ &quot;id&quot;: &quot;e7c7338c-065c-45af-b58f-363201bfae5b&quot; }
+</pre></div>
+</div>
+<ul class="simple">
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">/task/{task_id}</span></code> (Get Task) :</dt><dd><ul>
+<li><p>Allows checking the status of a specific batch model inference task.</p></li>
+<li><p>Provides details about the task’s current state, timestamps, and results.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>{&quot;c953b56c-3941-4e78-a0b4-a72bad04c7ae&quot;:{
+&quot;state&quot;:&quot;SUCCESS&quot;,
+&quot;received&quot;:&quot;2024-04-17 14:03:17&quot;,
+&quot;started&quot;:&quot;2024-04-17 14:03:17&quot;,
+&quot;succeeded&quot;:&quot;2024-04-17 14:03:19&quot;,
+&quot;failed&quot;:null,
+&quot;rejected&quot;:null,
+&quot;retried&quot;:null,
+&quot;retries&quot;:0,
+&quot;revoked&quot;:null,
+&quot;timestamp&quot;:&quot;2024-04-17 14:03:19&quot;,
+&quot;runtime&quot;:1.6769610103219748,
+&quot;exception&quot;:null,
+&quot;traceback&quot;:null,
+&quot;args&quot;:{
+    &quot;audio_files&quot;:{
+    &quot;audio/audio_folder/test_audio_1.wav&quot;:null,&quot;audio/test_audio_2.wav&quot;:null},
+    &quot;model_label&quot;:&quot;wavlm&quot;},
+&quot;result&quot;:{
+    &quot;audio/audio_folder/test_audio_1.wav&quot;:{
+    &quot;status&quot;:&quot;SUCCESS&quot;,
+    &quot;rttm_path&quot;:&quot;output_rttm/wavlm-c953b56c-3941-4e78-a0b4-a72bad04c7ae/test_audio_1.rttm&quot;,
+    &quot;seg_path&quot;:&quot;/usr/src/app/vol_mount/output_seg/wavlm-c953b56c-3941-4e78-a0b4-a72bad04c7ae/test_audio_1.seg&quot;
+    },
+    &quot;audio/test_audio_2.wav&quot;:{
+    &quot;status&quot;:&quot;SUCCESS&quot;,
+    &quot;rttm_path&quot;:&quot;output_rttm/wavlm-c953b56c-3941-4e78-a0b4-a72bad04c7ae/test_audio_2.rttm&quot;,
+    &quot;seg_path&quot;:&quot;/usr/src/app/vol_mount/output_seg/wavlm-c953b56c-3941-4e78-a0b4-a72bad04c7ae/test_audio_2.seg&quot;
+    }
+    }
+}
+}
+</pre></div>
+</div>
+<ul class="simple">
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">/all_tasks</span></code> (Get All Tasks) :</dt><dd><ul>
+<li><p>Allows checking the records of all model inference tasks initiated since inception.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">/health</span></code> (Health Check) :</dt><dd><ul>
+<li><p>Performs health checks on various components of the system, including worker nodes, Redis backend, and RabbitMQ broker.</p></li>
+<li><p>Returns an “OK” message if all components are operational.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>{&quot;detail&quot;:&quot;OK&quot;}
+</pre></div>
+</div>
+<ul class="simple">
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">/models</span></code> (Get Models) :</dt><dd><ul>
+<li><p>Returns a JSON list of available model labels to use for inference.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>{
+    &quot;model_labels&quot;: [
+        &quot;wavlm&quot;,
+        &quot;wavlm_aug&quot;,
+        &quot;wavlm_both&quot;
+    ]
+}
+</pre></div>
+</div>
+<p><strong>Notes:</strong></p>
+<ul class="simple">
+<li><p>Tasks are processed asynchronously using Celery workers.</p></li>
+<li><p><strong>Flexible Inference</strong> : Given a list of input audio files in a batch that could contain missing or invalid files, the inference will still proceed with the valid files, and return notifications for files that had errors.</p></li>
+</ul>
+</section>
+</section>
+<hr class="docutils" />
+<section id="inference-endpoints-src-klass-osd-fastapi">
+<h2>Inference Endpoints (src.klass.osd_fastapi)<a class="headerlink" href="#inference-endpoints-src-klass-osd-fastapi" title="Permalink to this heading"></a></h2>
+<section id="fastapi-backend-src-klass-osd-fastapi-main">
+<h3>FastAPI backend (src.klass.osd_fastapi.main)<a class="headerlink" href="#fastapi-backend-src-klass-osd-fastapi-main" title="Permalink to this heading"></a></h3>
+</section>
+<section id="celery-model-inference-worker-src-klass-osd-fastapi-worker">
+<h3>Celery model inference worker (src.klass.osd_fastapi.worker)<a class="headerlink" href="#celery-model-inference-worker-src-klass-osd-fastapi-worker" title="Permalink to this heading"></a></h3>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="readme-env_setup_inference.html" class="btn btn-neutral float-left" title="Environment Setup for Inference Module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="readme-error_analysis.html" class="btn btn-neutral float-right" title="Error Analysis" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, aiap.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>klass_osd.pipelines.data_validation_training_for_wavLM package &mdash; klass-osd 1.0.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="_static/jquery.js?v=5d32c60e"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js?v=af2ce170"></script>
+        <script src="_static/doctools.js?v=888ff710"></script>
+        <script src="_static/sphinx_highlight.js?v=4825356b"></script>
+        <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="_static/copybutton.js?v=f281be69"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="klass_osd.pipelines.model_prediction package" href="klass_osd.pipelines.model_prediction.html" />
+    <link rel="prev" title="klass_osd.pipelines.data_segment package" href="klass_osd.pipelines.data_segment.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            klass-osd
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="readme-toc.html">Table of Contents</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="readme-toc.html#data-pipeline-model-training">Data Pipeline &amp; Model Training</a></li>
+<li class="toctree-l2"><a class="reference internal" href="readme-toc.html#inference-module">Inference Module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="readme-toc.html#others">Others</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="readme-toc.html#reference-documentation">Reference Documentation</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="klass_osd.html">Model Training klass_osd package</a><ul class="current">
+<li class="toctree-l4 current"><a class="reference internal" href="klass_osd.html#subpackages">Subpackages</a></li>
+<li class="toctree-l4"><a class="reference internal" href="klass_osd.html#module-klass_osd.hooks">klass_osd.hooks module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="klass_osd.html#module-klass_osd.pipeline_registry">klass_osd.pipeline_registry module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="klass_osd.html#module-klass_osd.settings">klass_osd.settings module</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">klass-osd</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="readme-toc.html">Table of Contents</a></li>
+          <li class="breadcrumb-item"><a href="klass_osd.html">Model Training klass_osd package</a></li>
+          <li class="breadcrumb-item"><a href="klass_osd.pipelines.html">klass_osd.pipelines package</a></li>
+      <li class="breadcrumb-item active">klass_osd.pipelines.data_validation_training_for_wavLM package</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/klass_osd.pipelines.data_validation_training_for_wavLM.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="klass-osd-pipelines-data-validation-training-for-wavlm-package">
+<h1>klass_osd.pipelines.data_validation_training_for_wavLM package<a class="headerlink" href="#klass-osd-pipelines-data-validation-training-for-wavlm-package" title="Permalink to this heading"></a></h1>
+<section id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this heading"></a></h2>
+</section>
+<section id="module-klass_osd.pipelines.data_validation_training_for_wavLM.nodes">
+<span id="klass-osd-pipelines-data-validation-training-for-wavlm-nodes-module"></span><h2>klass_osd.pipelines.data_validation_training_for_wavLM.nodes module<a class="headerlink" href="#module-klass_osd.pipelines.data_validation_training_for_wavLM.nodes" title="Permalink to this heading"></a></h2>
+<p>This is a boilerplate pipeline ‘data_validation_training_for_wavLM’
+generated using Kedro 0.18.14</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="klass_osd.pipelines.data_validation_training_for_wavLM.nodes.check_csv_exist">
+<span class="sig-prename descclassname"><span class="pre">klass_osd.pipelines.data_validation_training_for_wavLM.nodes.</span></span><span class="sig-name descname"><span class="pre">check_csv_exist</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file_path</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/klass_osd/pipelines/data_validation_training_for_wavLM/nodes.html#check_csv_exist"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#klass_osd.pipelines.data_validation_training_for_wavLM.nodes.check_csv_exist" title="Permalink to this definition"></a></dt>
+<dd><p>Checks if a CSV file exists at the given file path and attempts to read it.</p>
+<p>Parameters:
+- file_path (str): The file path to the CSV file.</p>
+<p>Returns:
+- Tuple[bool, Optional[pd.DataFrame]]: A tuple where the first element is a
+boolean indicating whether the file was successfully read, and the second
+element is the DataFrame read from the file or None if the file does not exist,
+is empty, could not be parsed, or an error occurred.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></span></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="klass_osd.pipelines.data_validation_training_for_wavLM.nodes.check_metadata">
+<span class="sig-prename descclassname"><span class="pre">klass_osd.pipelines.data_validation_training_for_wavLM.nodes.</span></span><span class="sig-name descname"><span class="pre">check_metadata</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">metadata_df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_end_duration</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target_sampling_rate</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/klass_osd/pipelines/data_validation_training_for_wavLM/nodes.html#check_metadata"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#klass_osd.pipelines.data_validation_training_for_wavLM.nodes.check_metadata" title="Permalink to this definition"></a></dt>
+<dd><p>Check the metadata for each audio file and identify any issues with the duration,
+file type, sampling rate, and number of channels.</p>
+<p>Args:
+- metadata_df (pd.DataFrame): A pandas DataFrame containing the metadata for
+the audio files.
+- max_end_duration (float): Maximum duration expected of an audio file
+- target_sampling_rate (int): Sampling rate (target)</p>
+<p>Returns:
+- incorrect_duration (list): A list of filenames with inappropriate durations.
+- incorrect_filetype (list): A list of filenames with incorrect file types.
+- incorrect_sampling_rate (list): A list of filenames with incorrect sampling rates.
+- incorrect_channels (list): A list of filenames with incorrect number of channels.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-data docutils literal notranslate"><span class="pre">Tuple</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">List</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>], <code class="xref py py-class docutils literal notranslate"><span class="pre">List</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>], <code class="xref py py-class docutils literal notranslate"><span class="pre">List</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>], <code class="xref py py-class docutils literal notranslate"><span class="pre">List</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>]]</span></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="klass_osd.pipelines.data_validation_training_for_wavLM.nodes.combined_validation_check_return_revised_dataset">
+<span class="sig-prename descclassname"><span class="pre">klass_osd.pipelines.data_validation_training_for_wavLM.nodes.</span></span><span class="sig-name descname"><span class="pre">combined_validation_check_return_revised_dataset</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">hashing_df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">train_split_type</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">train_audiofile_training_dir</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">eval_split_type</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">eval_audiofile_training_dir</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_end_duration</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target_sampling_rate</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/klass_osd/pipelines/data_validation_training_for_wavLM/nodes.html#combined_validation_check_return_revised_dataset"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#klass_osd.pipelines.data_validation_training_for_wavLM.nodes.combined_validation_check_return_revised_dataset" title="Permalink to this definition"></a></dt>
+<dd><p>Perform validation checks on audio files and return validation report and list of
+erraneous audio ids.</p>
+<p>Combines list of erraneous audio ids and revises hashing documents to exclude
+erraneous audio ids.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>hashing_df</strong> (<em>-</em>) – Hashing dataframe (containing audio IDs).</p></li>
+<li><p><strong>train_split_type</strong> (<em>-</em>) – type of dataset used (e.g. training).</p></li>
+<li><p><strong>train_audiofile_training_dir</strong> (<em>-</em>) – The directory path where the training</p></li>
+<li><p><strong>stored.</strong> (<em>files are</em>) – </p></li>
+<li><p><strong>eval_split_type</strong> (<em>-</em>) – type of dataset used (e.g. evaluation).</p></li>
+<li><p><strong>eval_audiofile_training_dir</strong> (<em>-</em>) – The directory path where the training audio</p></li>
+<li><p><strong>stored.</strong> – </p></li>
+<li><p><strong>max_end_duration</strong> (<em>-</em>) – The upper limit for the duration of an audio file in</p></li>
+<li><p><strong>invalid.</strong> (<em>as</em>) – </p></li>
+<li><p><strong>target_sampling_rate</strong> (<em>-</em>) – The desired sampling rate for the audio files in</p></li>
+<li><p><strong>flagged</strong> (<em>Hertz. Audio files that do not match this sampling rate will be</em>) – </p></li>
+<li><p><strong>invalid.</strong> – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p>hashing_df (pd.DataFrame): The hashing dataset after validation</p></li>
+</ul>
+<p>and cleanup.
+- train_json_contents (List[str]): A list containing a single JSON string
+with the validation check report for training dataset.
+- eval_json_contents (List[str]): A list containing a single JSON string
+with the validation check report for evaluation dataset.</p>
+</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Tuple[pd.DataFrame, List[str], List[str]]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="klass_osd.pipelines.data_validation_training_for_wavLM.nodes.create_combined_audioid_to_remove">
+<span class="sig-prename descclassname"><span class="pre">klass_osd.pipelines.data_validation_training_for_wavLM.nodes.</span></span><span class="sig-name descname"><span class="pre">create_combined_audioid_to_remove</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">unable_convert_sampling_rate</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">incorrect_duration</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">incorrect_filetype</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">incorrect_channels</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">file_not_found</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/klass_osd/pipelines/data_validation_training_for_wavLM/nodes.html#create_combined_audioid_to_remove"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#klass_osd.pipelines.data_validation_training_for_wavLM.nodes.create_combined_audioid_to_remove" title="Permalink to this definition"></a></dt>
+<dd><p>Combines lists of audio IDs flagged for various issues into a single list of
+unique audio IDs to remove.</p>
+<p>Parameters:
+- unable_convert_sampling_rate (List[str]): List of audio IDs that could not
+have their sampling rate correctly converted.
+- incorrect_duration (List[str]): List of audio IDs with incorrect durations.
+- incorrect_filetype (List[str]): List of audio IDs with incorrect file types.
+- incorrect_channels (List[str]): List of audio IDs with incorrect numbers of
+channels.</p>
+<p>Returns:
+- combined_list_audioid_to_remove (List[str]): A list of unique audio IDs that
+have been flagged for removal based on the provided criteria.</p>
+<p>This function consolidates various error flags related to audio file processing
+and annotation into a single, deduplicated list of audio IDs for removal
+or further investigation.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">List</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>]</span></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="klass_osd.pipelines.data_validation_training_for_wavLM.nodes.create_validation_check_report">
+<span class="sig-prename descclassname"><span class="pre">klass_osd.pipelines.data_validation_training_for_wavLM.nodes.</span></span><span class="sig-name descname"><span class="pre">create_validation_check_report</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">unable_convert_sampling_rate</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">incorrect_duration</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">incorrect_filetype</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">incorrect_channels</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">file_not_found</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/klass_osd/pipelines/data_validation_training_for_wavLM/nodes.html#create_validation_check_report"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#klass_osd.pipelines.data_validation_training_for_wavLM.nodes.create_validation_check_report" title="Permalink to this definition"></a></dt>
+<dd><p>Generates a validation check report summarizing issues identified in audio
+file processing and annotations.</p>
+<p>Parameters:
+- unable_convert_sampling_rate (List[str]): Filenames that could not be
+resampled to the correct sampling rate.
+- incorrect_duration (List[str]): Filenames with incorrect durations.
+- incorrect_filetype (List[str]): Filenames with incorrect file types.
+- incorrect_channels (List[str]): Filenames with an incorrect number of
+audio channels.
+- file_not_found (List[str]): Filenames that were not found during processing.</p>
+<p>Returns:
+- json_contents (List[str]): A list containing a single JSON string that
+summarizes all validation checks.</p>
+<p>This report provides a comprehensive overview of potential issues found
+during the validation checks, including problems with duration, file type,
+audio channels, and sampling rate conversion, making it easier
+to understand and address the identified issues.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">List</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>]</span></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="klass_osd.pipelines.data_validation_training_for_wavLM.nodes.create_wav_metadata">
+<span class="sig-prename descclassname"><span class="pre">klass_osd.pipelines.data_validation_training_for_wavLM.nodes.</span></span><span class="sig-name descname"><span class="pre">create_wav_metadata</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">hashing_df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">audiofile_training_dir</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">split_type</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/klass_osd/pipelines/data_validation_training_for_wavLM/nodes.html#create_wav_metadata"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#klass_osd.pipelines.data_validation_training_for_wavLM.nodes.create_wav_metadata" title="Permalink to this definition"></a></dt>
+<dd><p>Create metadata for WAV files from the specified audio ID pathway and training
+audio file directory.</p>
+<p>Args:
+- hashing_df(pd.DataFrame): hashing document containing specified audio id
+for training
+- audiofile_training_dir (str): the directory for training audio files
+- split_type: (str): type of dataset used (e.g. training, evaluation, test)</p>
+<p>Returns:
+- metadata_df (pandas DataFrame): metadata for the matched WAV files
+- file_not_found (list): files not found in the specified folder</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-data docutils literal notranslate"><span class="pre">Tuple</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">DataFrame</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">List</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>]]</span></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="klass_osd.pipelines.data_validation_training_for_wavLM.nodes.get_gender_chart">
+<span class="sig-prename descclassname"><span class="pre">klass_osd.pipelines.data_validation_training_for_wavLM.nodes.</span></span><span class="sig-name descname"><span class="pre">get_gender_chart</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">new_hashing_df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">no_of_spk</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">split_type</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/klass_osd/pipelines/data_validation_training_for_wavLM/nodes.html#get_gender_chart"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#klass_osd.pipelines.data_validation_training_for_wavLM.nodes.get_gender_chart" title="Permalink to this definition"></a></dt>
+<dd><p>Generates barchart of gender combination of audio files in the hashing dataset.</p>
+<p>Parameters:
+- new_hashing_df (pd.DataFrame): New revised dataframe. This document is expected
+to contain audio IDs for training along with their respective gender combi values.
+- no_of_spk (int): The number of speakers.
+- split_type (str): The type of dataset used
+(e.g., ‘training’, ‘evaluation’, ‘test’).
+This filters the data to only include entries corresponding to the specified
+dataset type.</p>
+<p>Returns:
+- None: The function directly saves the generated barchart as image files and
+does not return any value.</p>
+<p>Note:
+- The function assumes the dataframe contains a ‘split’ column to filter by
+split_type, and columns named ‘gender_combi’.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></span></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="klass_osd.pipelines.data_validation_training_for_wavLM.nodes.get_histogram_plt">
+<span class="sig-prename descclassname"><span class="pre">klass_osd.pipelines.data_validation_training_for_wavLM.nodes.</span></span><span class="sig-name descname"><span class="pre">get_histogram_plt</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">new_hashing_df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">no_of_spk</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">split_type</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/klass_osd/pipelines/data_validation_training_for_wavLM/nodes.html#get_histogram_plt"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#klass_osd.pipelines.data_validation_training_for_wavLM.nodes.get_histogram_plt" title="Permalink to this definition"></a></dt>
+<dd><p>Generates histograms for SNR values across different numbers of speakers
+from a specified dataset.</p>
+<p>Parameters:
+- new_hashing_df (pd.DataFrame): New revised dataframe. This document is expected
+to contain audio IDs for training along with their respective SNR values for
+:rtype: <span class="sphinx_autodoc_typehints-type"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></span></p>
+<p>different numbers of speakers.
+- no_of_spk (int): The number of speakers to include in the histograms.</p>
+<blockquote>
+<div><p>This determines the number of subplots generated.</p>
+</div></blockquote>
+<ul class="simple">
+<li><p>split_type (str): The type of dataset used</p></li>
+</ul>
+<dl class="simple">
+<dt>(e.g., ‘training’, ‘evaluation’, ‘test’).</dt><dd><p>This filters the data to only include entries corresponding to the specified
+dataset type.</p>
+</dd>
+</dl>
+<p>Returns:
+- None: The function directly saves the generated histograms as image files and
+does not return any value.</p>
+<p>Note:
+- The function assumes the dataframe contains a ‘split’ column to filter
+by split_type, and columns named ‘one_spk_SNR’, ‘two_spk_SNR’, and ‘three_spk_SNR’
+representing the SNR values for one, two, and three speakers, respectively.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="klass_osd.pipelines.data_validation_training_for_wavLM.nodes.resample_audio_extract_err_rate">
+<span class="sig-prename descclassname"><span class="pre">klass_osd.pipelines.data_validation_training_for_wavLM.nodes.</span></span><span class="sig-name descname"><span class="pre">resample_audio_extract_err_rate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">audiofile_training_dir</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">incorrect_sampling_rate</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target_sampling_rate</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/klass_osd/pipelines/data_validation_training_for_wavLM/nodes.html#resample_audio_extract_err_rate"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#klass_osd.pipelines.data_validation_training_for_wavLM.nodes.resample_audio_extract_err_rate" title="Permalink to this definition"></a></dt>
+<dd><p>Extracts and resamples .wav files with incorrect sampling rate to the desired
+target sampling rate.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>audiofile_training_dir</strong> (<em>-</em>) – The directory where the .wav files are located.</p></li>
+<li><p><strong>incorrect_sampling_rate</strong> (<em>-</em>) – List of filenames with incorrect</p></li>
+<li><p><strong>rates.</strong> (<em>sampling</em>) – </p></li>
+<li><p><strong>target_sampling_rate</strong> (<em>-</em>) – Sampling rate (target)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>List of filenames that were not successfully
+resampled.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>files_to_be_removed (list)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="klass_osd.pipelines.data_validation_training_for_wavLM.nodes.revise_hashing_df">
+<span class="sig-prename descclassname"><span class="pre">klass_osd.pipelines.data_validation_training_for_wavLM.nodes.</span></span><span class="sig-name descname"><span class="pre">revise_hashing_df</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">hashing_df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">combined_list_audioid_to_remove</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/klass_osd/pipelines/data_validation_training_for_wavLM/nodes.html#revise_hashing_df"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#klass_osd.pipelines.data_validation_training_for_wavLM.nodes.revise_hashing_df" title="Permalink to this definition"></a></dt>
+<dd><p>Removes entries from a hashing dataframe based on a list of audio IDs to be removed.</p>
+<p>This function loads a dataframe from a specified csv file. It then filters out the
+rows where the ‘audio_id’ is present in the provided list of audio IDs to
+be removed. The resulting dataframe, which excludes the specified audio IDs,
+is then returned.</p>
+<p>Parameters:
+hashing_df (pd.DataFrame): The file path to the parquet file containing the
+hashing dataframe.
+combined_list_audioid_to_remove (List[str]): A list of audio IDs to be
+removed from the dataframe.</p>
+<p>Returns:
+pd.DataFrame: A dataframe with the specified audio IDs removed.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">DataFrame</span></code></span></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="klass_osd.pipelines.data_validation_training_for_wavLM.nodes.sampling_rate_failed_fileids">
+<span class="sig-prename descclassname"><span class="pre">klass_osd.pipelines.data_validation_training_for_wavLM.nodes.</span></span><span class="sig-name descname"><span class="pre">sampling_rate_failed_fileids</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">audiofile_training_dir</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">incorrect_sampling_rate</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target_sampling_rate</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/klass_osd/pipelines/data_validation_training_for_wavLM/nodes.html#sampling_rate_failed_fileids"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#klass_osd.pipelines.data_validation_training_for_wavLM.nodes.sampling_rate_failed_fileids" title="Permalink to this definition"></a></dt>
+<dd><p>Identifies audio files that failed resampling due to incorrect sampling rates.</p>
+<p>Parameters:
+- audiofile_training_dir (str): Directory containing the training audio files.
+- incorrect_sampling_rate (List[str]): Filenames with incorrect sampling rates.
+- target_sampling_rate (int): Desired sampling rate for audio files.</p>
+<p>Returns:
+unable_convert_sampling_rate (List[str]): List of filenames that could not be
+resampled to the correct sampling rate.</p>
+<p>This function compiles a comprehensive list of files with incorrect
+sampling rates that could not be converted to correct sampling rates</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">List</span></code></span></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="klass_osd.pipelines.data_validation_training_for_wavLM.nodes.validation_check">
+<span class="sig-prename descclassname"><span class="pre">klass_osd.pipelines.data_validation_training_for_wavLM.nodes.</span></span><span class="sig-name descname"><span class="pre">validation_check</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">hashing_df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">split_type</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">audiofile_training_dir</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_end_duration</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target_sampling_rate</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/klass_osd/pipelines/data_validation_training_for_wavLM/nodes.html#validation_check"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#klass_osd.pipelines.data_validation_training_for_wavLM.nodes.validation_check" title="Permalink to this definition"></a></dt>
+<dd><p>Perform validation checks on audio files. Return validation report and list of
+erraneous audio ids.</p>
+<p>This function performs several validation checks and audio properties
+verification, to ensure that the audio files meet specified criteria. It identifies
+audio files with issues such as incorrect sampling rates, inappropriate durations,
+incorrect file types, and incorrect number of channels. Based on the validation
+results, it then revises the input dataset (hashing dataset) by removing
+entries related to problematic audio files.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>hashing_df</strong> (<em>pd.DataFrame</em>) – hashing dataframe (containing audio IDs).</p></li>
+<li><p><strong>split_type</strong> (<em>str</em>) – type of dataset used (e.g. train, evaluation, test).</p></li>
+<li><p><strong>audiofile_training_dir</strong> (<em>str</em>) – The directory path where the training audio</p></li>
+<li><p><strong>stored.</strong> (<em>files are</em>) – </p></li>
+<li><p><strong>max_end_duration</strong> (<em>float</em>) – The upper limit for the duration of an audio file</p></li>
+<li><p><strong>invalid.</strong> (<em>flagged as</em>) – </p></li>
+<li><p><strong>target_sampling_rate</strong> (<em>int</em>) – The desired sampling rate for the audio files in</p></li>
+<li><p><strong>be</strong> (<em>Hertz. Audio files that do not match this sampling rate will</em>) – </p></li>
+<li><p><strong>invalid.</strong> – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p>combined_list_audioid_to_remove (list): list of audio ids to remove.</p></li>
+<li><p>json_contents (List[str]): A list containing a single JSON string with</p></li>
+</ul>
+<p>the validation check report.</p>
+</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Tuple[List[str], List[str]]</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="module-klass_osd.pipelines.data_validation_training_for_wavLM.pipeline">
+<span id="klass-osd-pipelines-data-validation-training-for-wavlm-pipeline-module"></span><h2>klass_osd.pipelines.data_validation_training_for_wavLM.pipeline module<a class="headerlink" href="#module-klass_osd.pipelines.data_validation_training_for_wavLM.pipeline" title="Permalink to this heading"></a></h2>
+<p>This is a boilerplate pipeline ‘data_validation_training_for_wavLM’
+generated using Kedro 0.18.14</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="klass_osd.pipelines.data_validation_training_for_wavLM.pipeline.create_pipeline">
+<span class="sig-prename descclassname"><span class="pre">klass_osd.pipelines.data_validation_training_for_wavLM.pipeline.</span></span><span class="sig-name descname"><span class="pre">create_pipeline</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/klass_osd/pipelines/data_validation_training_for_wavLM/pipeline.html#create_pipeline"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#klass_osd.pipelines.data_validation_training_for_wavLM.pipeline.create_pipeline" title="Permalink to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">Pipeline</span></code></span></p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="module-klass_osd.pipelines.data_validation_training_for_wavLM">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-klass_osd.pipelines.data_validation_training_for_wavLM" title="Permalink to this heading"></a></h2>
+<p>This is a boilerplate pipeline ‘data_validation_training_for_wavLM’
+generated using Kedro 0.18.14</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="klass_osd.pipelines.data_validation_training_for_wavLM.create_pipeline">
+<span class="sig-prename descclassname"><span class="pre">klass_osd.pipelines.data_validation_training_for_wavLM.</span></span><span class="sig-name descname"><span class="pre">create_pipeline</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/klass_osd/pipelines/data_validation_training_for_wavLM/pipeline.html#create_pipeline"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#klass_osd.pipelines.data_validation_training_for_wavLM.create_pipeline" title="Permalink to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">Pipeline</span></code></span></p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="klass_osd.pipelines.data_segment.html" class="btn btn-neutral float-left" title="klass_osd.pipelines.data_segment package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="klass_osd.pipelines.model_prediction.html" class="btn btn-neutral float-right" title="klass_osd.pipelines.model_prediction package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, aiap.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

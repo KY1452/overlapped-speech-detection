@@ -1,0 +1,927 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>klass_osd.pipelines.data_processing package &mdash; klass-osd 1.0.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="_static/jquery.js?v=5d32c60e"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js?v=af2ce170"></script>
+        <script src="_static/doctools.js?v=888ff710"></script>
+        <script src="_static/sphinx_highlight.js?v=4825356b"></script>
+        <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="_static/copybutton.js?v=f281be69"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="klass_osd.pipelines.data_segment package" href="klass_osd.pipelines.data_segment.html" />
+    <link rel="prev" title="klass_osd.pipelines.data_chunks package" href="klass_osd.pipelines.data_chunks.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            klass-osd
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="readme-toc.html">Table of Contents</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="readme-toc.html#data-pipeline-model-training">Data Pipeline &amp; Model Training</a></li>
+<li class="toctree-l2"><a class="reference internal" href="readme-toc.html#inference-module">Inference Module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="readme-toc.html#others">Others</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="readme-toc.html#reference-documentation">Reference Documentation</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="klass_osd.html">Model Training klass_osd package</a><ul class="current">
+<li class="toctree-l4 current"><a class="reference internal" href="klass_osd.html#subpackages">Subpackages</a></li>
+<li class="toctree-l4"><a class="reference internal" href="klass_osd.html#module-klass_osd.hooks">klass_osd.hooks module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="klass_osd.html#module-klass_osd.pipeline_registry">klass_osd.pipeline_registry module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="klass_osd.html#module-klass_osd.settings">klass_osd.settings module</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">klass-osd</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="readme-toc.html">Table of Contents</a></li>
+          <li class="breadcrumb-item"><a href="klass_osd.html">Model Training klass_osd package</a></li>
+          <li class="breadcrumb-item"><a href="klass_osd.pipelines.html">klass_osd.pipelines package</a></li>
+      <li class="breadcrumb-item active">klass_osd.pipelines.data_processing package</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/klass_osd.pipelines.data_processing.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="klass-osd-pipelines-data-processing-package">
+<h1>klass_osd.pipelines.data_processing package<a class="headerlink" href="#klass-osd-pipelines-data-processing-package" title="Permalink to this heading"></a></h1>
+<section id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this heading"></a></h2>
+</section>
+<section id="module-klass_osd.pipelines.data_processing.nodes">
+<span id="klass-osd-pipelines-data-processing-nodes-module"></span><h2>klass_osd.pipelines.data_processing.nodes module<a class="headerlink" href="#module-klass_osd.pipelines.data_processing.nodes" title="Permalink to this heading"></a></h2>
+<p>This is a boilerplate pipeline ‘data_processing’
+generated using Kedro 0.18.14</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="klass_osd.pipelines.data_processing.nodes.audio_start_stop_time">
+<span class="sig-prename descclassname"><span class="pre">klass_osd.pipelines.data_processing.nodes.</span></span><span class="sig-name descname"><span class="pre">audio_start_stop_time</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">row</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/klass_osd/pipelines/data_processing/nodes.html#audio_start_stop_time"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#klass_osd.pipelines.data_processing.nodes.audio_start_stop_time" title="Permalink to this definition"></a></dt>
+<dd><p>Calculate the start and stop times of the actual audio based on
+pauses and word timings.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>row</strong> (<em>pd.Series</em>) – A row from the DataFrame containing “timing,”</p></li>
+<li><p><strong>&quot;pause_start_time</strong> – </p></li>
+<li><p><strong>&quot;</strong> – </p></li>
+<li><p><strong>columns.</strong> (<em>and &quot;pause_stop_time&quot;</em>) – </p></li>
+<li><p><strong>dataset</strong> – dataframe</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A tuple containing two lists of start and stop times for the
+actual audio, where start and stop times are floats.
+The start times indicate when the audio starts, and the stop times
+indicate when the audio stops.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>tuple</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="klass_osd.pipelines.data_processing.nodes.combine_overlaps">
+<span class="sig-prename descclassname"><span class="pre">klass_osd.pipelines.data_processing.nodes.</span></span><span class="sig-name descname"><span class="pre">combine_overlaps</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ranges</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/klass_osd/pipelines/data_processing/nodes.html#combine_overlaps"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#klass_osd.pipelines.data_processing.nodes.combine_overlaps" title="Permalink to this definition"></a></dt>
+<dd><p>Combines overlapping ranges into a single range.</p>
+<p>This function calculates the inverted timings by removing the specified ranges
+from the total range. It partitions the total range into intervals that are not
+overlapped by any of the removal ranges, and then further refines these intervals
+by excluding portions intersecting with the removal ranges.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>ranges</strong> (<em>list</em>) – A list of ranges to be combined.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The combined ranges.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list</p>
+</dd>
+</dl>
+<p class="rubric">Example</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">combine_overlaps</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">7</span><span class="p">]])</span>
+<span class="go">[[1, 4], [5, 7]]</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="klass_osd.pipelines.data_processing.nodes.convert_sparselibrimix_to_dataframe">
+<span class="sig-prename descclassname"><span class="pre">klass_osd.pipelines.data_processing.nodes.</span></span><span class="sig-name descname"><span class="pre">convert_sparselibrimix_to_dataframe</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">partition_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">no_of_speakers</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/klass_osd/pipelines/data_processing/nodes.html#convert_sparselibrimix_to_dataframe"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#klass_osd.pipelines.data_processing.nodes.convert_sparselibrimix_to_dataframe" title="Permalink to this definition"></a></dt>
+<dd><p>Convert list data to a DataFrame.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data</strong> (<em>list</em>) – The path to the JSON file.</p></li>
+<li><p><strong>partition_id</strong> (<em>str</em>) – The ID of the partition to identify the source folder.</p></li>
+<li><p><strong>no_of_speakers</strong> (<em>int</em>) – The number of speakers in the data.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The converted DataFrame.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>pd.DataFrame</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="klass_osd.pipelines.data_processing.nodes.create_pause_start_time">
+<span class="sig-prename descclassname"><span class="pre">klass_osd.pipelines.data_processing.nodes.</span></span><span class="sig-name descname"><span class="pre">create_pause_start_time</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dataset</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">start_stop</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/klass_osd/pipelines/data_processing/nodes.html#create_pause_start_time"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#klass_osd.pipelines.data_processing.nodes.create_pause_start_time" title="Permalink to this definition"></a></dt>
+<dd><p>Create a list of pause start times based on the pause locations within a DataFrame.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>dataset</strong> (<em>pd.DataFrame</em>) – The DataFrame containing “timing” and “pause_start_time”</p></li>
+<li><p><strong>columns.</strong> – </p></li>
+<li><p><strong>start_stop</strong> (<em>list</em><em>[</em><em>float</em><em>]</em>) – A list of pause locations.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A list of start times for each audio segment, extracted from the
+“timing” column.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list[float]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="klass_osd.pipelines.data_processing.nodes.create_pause_stop_time">
+<span class="sig-prename descclassname"><span class="pre">klass_osd.pipelines.data_processing.nodes.</span></span><span class="sig-name descname"><span class="pre">create_pause_stop_time</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dataset</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">start_stop</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/klass_osd/pipelines/data_processing/nodes.html#create_pause_stop_time"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#klass_osd.pipelines.data_processing.nodes.create_pause_stop_time" title="Permalink to this definition"></a></dt>
+<dd><p>Create a list of stop times based on the pause locations within a DataFrame.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>dataset</strong> (<em>pd.DataFrame</em>) – The DataFrame containing “timing” and</p></li>
+<li><p><strong>columns.</strong> (<em>&quot;pause_start_time&quot;</em>) – </p></li>
+<li><p><strong>start_stop</strong> (<em>list</em><em>(</em><em>float</em><em>)</em>) – A list of pause locations (float).</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A list of stop times for each audio segment, extracted
+from the “timing” column.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="klass_osd.pipelines.data_processing.nodes.create_source1_audio_list">
+<span class="sig-prename descclassname"><span class="pre">klass_osd.pipelines.data_processing.nodes.</span></span><span class="sig-name descname"><span class="pre">create_source1_audio_list</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dataset</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/klass_osd/pipelines/data_processing/nodes.html#create_source1_audio_list"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#klass_osd.pipelines.data_processing.nodes.create_source1_audio_list" title="Permalink to this definition"></a></dt>
+<dd><p>Creates a list of ranges for source1 audio based on the given DataFrame.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>dataset</strong> (<em>pandas.DataFrame</em>) – The DataFrame containing the source1 start and stop</p></li>
+<li><p><strong>time.</strong> – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A list of tuples containing the ranges for each source1 audio.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="klass_osd.pipelines.data_processing.nodes.create_source2_audio_list">
+<span class="sig-prename descclassname"><span class="pre">klass_osd.pipelines.data_processing.nodes.</span></span><span class="sig-name descname"><span class="pre">create_source2_audio_list</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dataset</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/klass_osd/pipelines/data_processing/nodes.html#create_source2_audio_list"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#klass_osd.pipelines.data_processing.nodes.create_source2_audio_list" title="Permalink to this definition"></a></dt>
+<dd><p>Creates a list of ranges for source1 audio based on the given DataFrame.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>dataset</strong> (<em>pandas.DataFrame</em>) – The DataFrame containing the source1 start and stop</p></li>
+<li><p><strong>time.</strong> – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A list of tuples containing the ranges for each source1 audio.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="klass_osd.pipelines.data_processing.nodes.create_source3_audio_list">
+<span class="sig-prename descclassname"><span class="pre">klass_osd.pipelines.data_processing.nodes.</span></span><span class="sig-name descname"><span class="pre">create_source3_audio_list</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dataset</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/klass_osd/pipelines/data_processing/nodes.html#create_source3_audio_list"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#klass_osd.pipelines.data_processing.nodes.create_source3_audio_list" title="Permalink to this definition"></a></dt>
+<dd><p>Creates a list of ranges for source1 audio based on the given DataFrame.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>dataset</strong> (<em>pandas.DataFrame</em>) – The DataFrame containing the source1 start and stop</p></li>
+<li><p><strong>time.</strong> – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A list of tuples containing the ranges for each source1 audio.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="klass_osd.pipelines.data_processing.nodes.create_start_stop">
+<span class="sig-prename descclassname"><span class="pre">klass_osd.pipelines.data_processing.nodes.</span></span><span class="sig-name descname"><span class="pre">create_start_stop</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dataset</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/klass_osd/pipelines/data_processing/nodes.html#create_start_stop"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#klass_osd.pipelines.data_processing.nodes.create_start_stop" title="Permalink to this definition"></a></dt>
+<dd><p>Creates a list of start and stop indexes for each pause “” in the list of words.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>dataset</strong> (<em>DataFrame</em>) – The input DataFrame.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A list of start and stop indexes for each word.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>List(float)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="klass_osd.pipelines.data_processing.nodes.create_table">
+<span class="sig-prename descclassname"><span class="pre">klass_osd.pipelines.data_processing.nodes.</span></span><span class="sig-name descname"><span class="pre">create_table</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">partition_data</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/klass_osd/pipelines/data_processing/nodes.html#create_table"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#klass_osd.pipelines.data_processing.nodes.create_table" title="Permalink to this definition"></a></dt>
+<dd><p>Creates a table from data in a file.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>partition_data</strong> (<em>str</em>) – input txt from dataset</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The created table.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>pandas.DataFrame</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="klass_osd.pipelines.data_processing.nodes.extract_start_stop_times">
+<span class="sig-prename descclassname"><span class="pre">klass_osd.pipelines.data_processing.nodes.</span></span><span class="sig-name descname"><span class="pre">extract_start_stop_times</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">metadata_df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">source_column</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dataset</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/klass_osd/pipelines/data_processing/nodes.html#extract_start_stop_times"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#klass_osd.pipelines.data_processing.nodes.extract_start_stop_times" title="Permalink to this definition"></a></dt>
+<dd><p>Extracts the start and stop times for each source from a metadata dataframe and a
+dataframe containing unique IDs and start/stop times.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>metadata_df</strong> (<em>pandas.DataFrame</em>) – The metadata dataframe containing the source</p></li>
+<li><p><strong>like</strong> (<em>IDs and other columns</em>) – </p></li>
+<li><p><strong>source_column</strong> (<em>str</em>) – The name of the source column in the metadata dataframe.</p></li>
+<li><p><strong>dataset</strong> (<em>pandas.DataFrame</em>) – The dataframe containing unique IDs and start/stop</p></li>
+<li><p><strong>times.</strong> – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A tuple containing two lists: one for start times and
+one for stop times.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Tuple[List, List]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="klass_osd.pipelines.data_processing.nodes.generation_label_2mix">
+<span class="sig-prename descclassname"><span class="pre">klass_osd.pipelines.data_processing.nodes.</span></span><span class="sig-name descname"><span class="pre">generation_label_2mix</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dataset</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/klass_osd/pipelines/data_processing/nodes.html#generation_label_2mix"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#klass_osd.pipelines.data_processing.nodes.generation_label_2mix" title="Permalink to this definition"></a></dt>
+<dd><p>Generates label information for a 2 speakers mix dataset, identifying 1 spk speech,
+overlapping speech, and silences in each audio clip.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>dataset</strong> (<span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">DataFrame</span></code></span>) – A Pandas DataFrame containing information about the 2-mix audio clips,</p></li>
+<li><p><strong>including</strong> – <ul>
+<li><p>‘mixture_ID’: Unique identifier for the audio clip.</p></li>
+<li><p>’audio_total_duration’: Total duration of the audio clip in seconds.</p></li>
+<li><p>Additional information about the source audio and labels might be present.</p></li>
+</ul>
+</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">DataFrame</span></code></span></p>
+</dd>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p><p>A Pandas DataFrame with additional columns containing labels for each audio
+clip:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>’audio_id’: Same as ‘mixture_ID’ from the input DataFrame.</p></li>
+<li><p>’source1_ranges_list’, ‘source2_ranges_list’: Lists of speech ranges for</p></li>
+</ul>
+<p>each source in the mix.
+* ‘total_time’: Duration of the audio clip in seconds.
+* ‘speech_times’: List of combined speech ranges for both sources
+(no overlaps).
+* ‘non_speech’: List of silence ranges in the audio clip.
+* ‘one_spk’: List of ranges where only one speaker is active.
+* ‘overlaps’: List of ranges where both speakers are active
+(potentially overlapped speech).</p>
+</div></blockquote>
+</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>KeyError</strong> – If the required columns are not present in the input DataFrame.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="klass_osd.pipelines.data_processing.nodes.generation_label_3mix">
+<span class="sig-prename descclassname"><span class="pre">klass_osd.pipelines.data_processing.nodes.</span></span><span class="sig-name descname"><span class="pre">generation_label_3mix</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dataset</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/klass_osd/pipelines/data_processing/nodes.html#generation_label_3mix"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#klass_osd.pipelines.data_processing.nodes.generation_label_3mix" title="Permalink to this definition"></a></dt>
+<dd><p>Generates label information for a 3 speaker mix dataset, identifying non-speech,
+1 speaker and 2, 3 speaker overlaps in each audio clip.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>dataset</strong> (<span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">DataFrame</span></code></span>) – A Pandas DataFrame containing information about the 3-mix audio clips,</p></li>
+<li><p><strong>including</strong> – <ul>
+<li><p>‘mixture_ID’: Unique identifier for the audio clip.</p></li>
+<li><p>’audio_total_duration’: Total duration of the audio clip in seconds.</p></li>
+<li><p>Additional information about the source audio and labels might be present.</p></li>
+</ul>
+</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">DataFrame</span></code></span></p>
+</dd>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p><p>A Pandas DataFrame with additional columns containing labels for each
+audio clip:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>’audio_id’: Same as ‘mixture_ID’ from the input DataFrame.</p></li>
+<li><p>’source1_ranges_list’, ‘source2_ranges_list’, ‘source3_ranges_list’:</p></li>
+</ul>
+<p>Lists of speech ranges for each source in the mix.
+* ‘total_time’: Duration of the audio clip in seconds.
+* ‘speech_times’: List of combined speech ranges for all sources
+(no overlaps).
+* ‘non_speech’: List of silence ranges in the audio clip.
+* ‘one_spk’, ‘two_spk’, ‘three_spk’: Lists of speech ranges for 1, 2, and 3
+speakers, respectively.
+* ‘two_or_three_spk’: Combined list of speech ranges for 2 or 3 speakers
+(not mutually exclusive with ‘one_spk’).</p>
+</div></blockquote>
+</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>KeyError</strong> – If the required columns are not present in the input DataFrame.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="klass_osd.pipelines.data_processing.nodes.get_duration">
+<span class="sig-prename descclassname"><span class="pre">klass_osd.pipelines.data_processing.nodes.</span></span><span class="sig-name descname"><span class="pre">get_duration</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dataset</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sampling_rate</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/klass_osd/pipelines/data_processing/nodes.html#get_duration"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#klass_osd.pipelines.data_processing.nodes.get_duration" title="Permalink to this definition"></a></dt>
+<dd><p>Adds a column called “audio_total_duration” to the provided DataFrame
+based on the audio length and sampling rate.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>dataset</strong> (<span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">DataFrame</span></code></span>) – A Pandas DataFrame containing an “audio_total_duration” column in</p></li>
+<li><p><strong>column.</strong> (<em>addition to a &quot;length&quot;</em>) – </p></li>
+<li><p><strong>length</strong> – The “length” column should represent the audio duration in seconds.</p></li>
+<li><p><strong>sampling_rate</strong> (<span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code></span>) – The sampling rate of the audio (e.g., 16000 for 16 kHz audio;</p></li>
+<li><p><strong>audio</strong><strong>)</strong><strong>.</strong> (<em>8000 for 8kHz</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">DataFrame</span></code></span></p>
+</dd>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>A new DataFrame with the same data as the original, but with an added
+“audio_total_duration” column representing the audio duration in seconds.</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>TypeError</strong> – If either the DataFrame or the sampling rate is not of the</p></li>
+<li><p><strong>expected type.</strong> – </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="klass_osd.pipelines.data_processing.nodes.get_intersect">
+<span class="sig-prename descclassname"><span class="pre">klass_osd.pipelines.data_processing.nodes.</span></span><span class="sig-name descname"><span class="pre">get_intersect</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">range1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">range2</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/klass_osd/pipelines/data_processing/nodes.html#get_intersect"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#klass_osd.pipelines.data_processing.nodes.get_intersect" title="Permalink to this definition"></a></dt>
+<dd><p>Returns the intersection of two ranges.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>range1</strong> (<em>list</em>) – The first range.</p></li>
+<li><p><strong>range2</strong> (<em>list</em>) – The second range.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The intersection of two ranges, or None if no intersection.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list or None</p>
+</dd>
+</dl>
+<p>Example:</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="klass_osd.pipelines.data_processing.nodes.get_intersect_of_multiple_range">
+<span class="sig-prename descclassname"><span class="pre">klass_osd.pipelines.data_processing.nodes.</span></span><span class="sig-name descname"><span class="pre">get_intersect_of_multiple_range</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ranges</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/klass_osd/pipelines/data_processing/nodes.html#get_intersect_of_multiple_range"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#klass_osd.pipelines.data_processing.nodes.get_intersect_of_multiple_range" title="Permalink to this definition"></a></dt>
+<dd><p>Find the intersection of multiple ranges.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>ranges</strong> (<em>List</em><em>[</em><em>List</em><em>]</em>) – List of ranges.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The intersection of all ranges.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>List[List]</p>
+</dd>
+</dl>
+<p class="rubric">Example</p>
+<p>multiple_ranges = [[[3, 5], [9, 10], [11, 25]],
+[[3, 4], [7, 19], [21, 30]],
+[[3, 5], [6, 8], [9, 11]]]</p>
+<p>get_intersect_of_multiple_range(multiple_ranges)</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="p">[[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span> <span class="p">[</span><span class="mi">9</span><span class="p">,</span> <span class="mi">10</span><span class="p">]]</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="klass_osd.pipelines.data_processing.nodes.get_intersect_of_two_list">
+<span class="sig-prename descclassname"><span class="pre">klass_osd.pipelines.data_processing.nodes.</span></span><span class="sig-name descname"><span class="pre">get_intersect_of_two_list</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">list1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">list2</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/klass_osd/pipelines/data_processing/nodes.html#get_intersect_of_two_list"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#klass_osd.pipelines.data_processing.nodes.get_intersect_of_two_list" title="Permalink to this definition"></a></dt>
+<dd><p>Returns the intersection of two lists of ranges.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>list1</strong> (<em>List</em><em>[</em><em>List</em><em>[</em><em>float</em><em>]</em><em>]</em>) – The first list of ranges, where each range</p></li>
+<li><p><strong>[</strong><strong>start</strong> (<em>is specified as</em>) – </p></li>
+<li><p><strong>end</strong><strong>]</strong><strong>.</strong> – </p></li>
+<li><p><strong>list2</strong> (<em>List</em><em>[</em><em>List</em><em>[</em><em>float</em><em>]</em><em>]</em>) – The second list of ranges, where each range</p></li>
+<li><p><strong>[</strong><strong>start</strong> – </p></li>
+<li><p><strong>end</strong><strong>]</strong><strong>.</strong> – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The intersection of the two lists of ranges.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>List[List[float]]</p>
+</dd>
+</dl>
+<p class="rubric">Example</p>
+<p>list1 = [[3, 5], [9, 10], [11, 25]]
+list2 = [[2, 4], [7, 19], [21, 30]]</p>
+<p>get_intersect_of_two_list(list1, list2)
+&gt;&gt;&gt; [[3, 4], [9, 10], [11, 19], [21, 25]]</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="klass_osd.pipelines.data_processing.nodes.get_labels_sparse2">
+<span class="sig-prename descclassname"><span class="pre">klass_osd.pipelines.data_processing.nodes.</span></span><span class="sig-name descname"><span class="pre">get_labels_sparse2</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">concatenated_df</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/klass_osd/pipelines/data_processing/nodes.html#get_labels_sparse2"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#klass_osd.pipelines.data_processing.nodes.get_labels_sparse2" title="Permalink to this definition"></a></dt>
+<dd><p>Takes in concatenated dataframe and returns a dictionary of label intersections
+for each mixture: no_speech, 1_speaker, 2_speaker.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>concatenated_df</strong> (<em>pd.DataFrame</em>) – The concatenated DataFrame containing the data.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A DataFrame containing the labels for each mixture.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>pd.DataFrame</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="klass_osd.pipelines.data_processing.nodes.get_labels_sparse3">
+<span class="sig-prename descclassname"><span class="pre">klass_osd.pipelines.data_processing.nodes.</span></span><span class="sig-name descname"><span class="pre">get_labels_sparse3</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">concatenated_df</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/klass_osd/pipelines/data_processing/nodes.html#get_labels_sparse3"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#klass_osd.pipelines.data_processing.nodes.get_labels_sparse3" title="Permalink to this definition"></a></dt>
+<dd><p>Takes in concatenated dataframe and returns a dataframe of labels for each mixture:
+no_speech, 1_speaker, 2_speaker, 3_speaker.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>concatenated_df</strong> (<em>pd.DataFrame</em>) – The concatenated DataFrame containing the data.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A DataFrame containing the labels for each mixture.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>pd.DataFrame</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="klass_osd.pipelines.data_processing.nodes.invert_timings">
+<span class="sig-prename descclassname"><span class="pre">klass_osd.pipelines.data_processing.nodes.</span></span><span class="sig-name descname"><span class="pre">invert_timings</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">all_range_to_remove</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">all_total_range</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/klass_osd/pipelines/data_processing/nodes.html#invert_timings"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#klass_osd.pipelines.data_processing.nodes.invert_timings" title="Permalink to this definition"></a></dt>
+<dd><p>Inverts the timings by removing the given range from the total range.</p>
+<p>This function calculates the inverted timings by removing the specified ranges
+from the total range. It does this in two steps:</p>
+<ol class="arabic simple">
+<li><p>Partitioning: It divides the total range into intervals that do not overlap
+with any of the removal ranges.</p></li>
+<li><p>Refinement: It further refines these intervals by excluding any portions that
+intersect with the removal ranges.</p></li>
+</ol>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>all_range_to_remove</strong> (<em>List</em><em>[</em><em>List</em><em>]</em>) – The list of ranges to be removed.</p></li>
+<li><p><strong>all_total_range</strong> (<em>List</em><em>[</em><em>List</em><em>]</em>) – The total range to be inverted.
+Each range should be specified as a list containing two elements:
+[start, end].</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><p>The inverted timings represented as a list of
+non-overlapping intervals.</p>
+<blockquote>
+<div><p>Each interval is specified as a list containing two elements: [start, end].</p>
+</div></blockquote>
+</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>result_intervals (List[List])</p>
+</dd>
+</dl>
+<dl class="simple">
+<dt>Example (code):</dt><dd><p>invert_timings([[3, 5], [7, 11]], [[0, 30]])
+&gt;&gt;&gt; [[0, 3], [5, 7], [11, 30]]</p>
+</dd>
+</dl>
+<p class="rubric">Example</p>
+<p>Illustration:
+Total_range: <a href="#id1"><span class="problematic" id="id2">|--------------------|</span></a>
+Range_to_remove:   <a href="#id3"><span class="problematic" id="id4">|----|</span></a>
+Appended:    <em>—–</em>    <em>———</em></p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="klass_osd.pipelines.data_processing.nodes.iterate_files_produce_df">
+<span class="sig-prename descclassname"><span class="pre">klass_osd.pipelines.data_processing.nodes.</span></span><span class="sig-name descname"><span class="pre">iterate_files_produce_df</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">txt_directory</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/klass_osd/pipelines/data_processing/nodes.html#iterate_files_produce_df"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#klass_osd.pipelines.data_processing.nodes.iterate_files_produce_df" title="Permalink to this definition"></a></dt>
+<dd><p>Iterates through all .txt files in the specified directory and
+its subdirectories, processes each file to extract relevant information,
+and creates a DataFrame.</p>
+<p>Parameters:
+- txt_directory (str): Path to the directory containing .txt files.</p>
+<p>Returns:
+- dataset (pd.DataFrame): DataFrame containing the extracted information.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">DataFrame</span></code></span></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="klass_osd.pipelines.data_processing.nodes.iterate_sparselibrimix_2">
+<span class="sig-prename descclassname"><span class="pre">klass_osd.pipelines.data_processing.nodes.</span></span><span class="sig-name descname"><span class="pre">iterate_sparselibrimix_2</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">partitioned_input</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/klass_osd/pipelines/data_processing/nodes.html#iterate_sparselibrimix_2"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#klass_osd.pipelines.data_processing.nodes.iterate_sparselibrimix_2" title="Permalink to this definition"></a></dt>
+<dd><p>Iterates through partitions for sparselibrimix2 and generates processed labels.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>partitioned_input</strong> (<em>dict</em>) – A dictionary containing partition IDs as keys and
+partition load functions as values.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Processed labels.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="klass_osd.pipelines.data_processing.nodes.iterate_sparselibrimix_3">
+<span class="sig-prename descclassname"><span class="pre">klass_osd.pipelines.data_processing.nodes.</span></span><span class="sig-name descname"><span class="pre">iterate_sparselibrimix_3</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">partitioned_input</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/klass_osd/pipelines/data_processing/nodes.html#iterate_sparselibrimix_3"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#klass_osd.pipelines.data_processing.nodes.iterate_sparselibrimix_3" title="Permalink to this definition"></a></dt>
+<dd><p>Iterates through partitions for sparselibrimix3 and generates processed labels.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>partitioned_input</strong> (<em>dict</em>) – A dictionary containing partition IDs as keys and
+partition load functions as values.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Processed labels.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="klass_osd.pipelines.data_processing.nodes.libri2mix_generate_labels_df">
+<span class="sig-prename descclassname"><span class="pre">klass_osd.pipelines.data_processing.nodes.</span></span><span class="sig-name descname"><span class="pre">libri2mix_generate_labels_df</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">unaligned_df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">alignment_dir</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">two_mix_metadata</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sampling_rate</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">batchsize</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">save_data_mixture_name_2mix</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/klass_osd/pipelines/data_processing/nodes.html#libri2mix_generate_labels_df"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#klass_osd.pipelines.data_processing.nodes.libri2mix_generate_labels_df" title="Permalink to this definition"></a></dt>
+<dd><p>Generate labels for Libri2Mix, update metadata, and returns dataframes
+(e.g. Parquet files).</p>
+<p>Args:
+- unaligned_df (pd.DataFrame): DataFrame containing unaligned data.
+- alignment_dir (str): pathway to the directory containing alignment documents.
+- two_mix_metadata (str): pathway to DataFrame containing metadata for two mix.
+- sampling_rate (float): Sampling rate in Hz.
+- batchsize (int): Size of each batch of data to be saved.
+- save_data_mixture_name_2mix (str): Name for the saved file.</p>
+<p>This function performs the following steps:
+1. Loads necessary data and metadata.
+2. Processes and updates metadata for Libri2Mix.
+3. Generates labels for 2mix scenarios.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">Dict</span></code></span></p>
+</dd>
+</dl>
+<dl class="simple">
+<dt># Update metadata for 2 speakers</dt><dd><dl class="simple">
+<dt>df_2mix_osd = update_metadata_2spk(</dt><dd><p>duration_2mix_metadata, alignment_df, unaligned_df</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p>)</p>
+<p>Returns:
+partitions (dict): A dictionary containing partitions of the generated labels
+dataframe.
+Each partition is stored as a DataFrame with keys indicating the part number.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="klass_osd.pipelines.data_processing.nodes.libri3mix_generate_labels_df">
+<span class="sig-prename descclassname"><span class="pre">klass_osd.pipelines.data_processing.nodes.</span></span><span class="sig-name descname"><span class="pre">libri3mix_generate_labels_df</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">unaligned_df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">alignment_dir</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">three_mix_metadata</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sampling_rate</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">batchsize</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">save_data_mixture_name_3mix</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/klass_osd/pipelines/data_processing/nodes.html#libri3mix_generate_labels_df"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#klass_osd.pipelines.data_processing.nodes.libri3mix_generate_labels_df" title="Permalink to this definition"></a></dt>
+<dd><p>Generate labels for Libri3Mix, update metadata, and save dataframes into
+Parquet files.</p>
+<p>Args:
+- unaligned_df (pd.DataFrame): DataFrame containing unaligned data.
+- alignment_dir (str): Path to the directory containing alignment documents.
+- three_mix_metadata (str): pathway to dataframe containing metadata for Libri3mix
+(dev/train-100/test).
+- sampling_rate (float): Sampling rate in Hz.
+- batchsize (int): Size of each batch of data to be saved.
+- save_data_mixture_name_3mix (str): Name for the saved file.</p>
+<p>This function performs the following steps:
+1. Loads necessary data and metadata.
+2. Processes and updates metadata for Libri3Mix.
+3. Generates labels for 3mix scenarios.
+4. Returns the resulting dataframe (saved as Parquet file).</p>
+<p>Returns:
+partitions (dict): A dictionary containing partitions of the generated labels
+dataframe. Each partition is stored as a DataFrame with keys indicating the
+part number.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">Dict</span></code></span></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="klass_osd.pipelines.data_processing.nodes.process_txt_file">
+<span class="sig-prename descclassname"><span class="pre">klass_osd.pipelines.data_processing.nodes.</span></span><span class="sig-name descname"><span class="pre">process_txt_file</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">partitioned_data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">final_df</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/klass_osd/pipelines/data_processing/nodes.html#process_txt_file"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#klass_osd.pipelines.data_processing.nodes.process_txt_file" title="Permalink to this definition"></a></dt>
+<dd><p>Process a single .txt file to extract audio timing information and
+append it to a DataFrame.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>partitioned_data</strong> (<em>list</em>) – .txt file in list format.</p></li>
+<li><p><strong>final_df</strong> (<em>pd.DataFrame</em>) – The DataFrame to which the extracted</p></li>
+<li><p><strong>appended.</strong> (<em>information will be</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The updated DataFrame containing the audio timing
+information.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>final_df (pd.DataFrame)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="klass_osd.pipelines.data_processing.nodes.remove_unaligned_2spk">
+<span class="sig-prename descclassname"><span class="pre">klass_osd.pipelines.data_processing.nodes.</span></span><span class="sig-name descname"><span class="pre">remove_unaligned_2spk</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dataset</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">unaligned_df</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/klass_osd/pipelines/data_processing/nodes.html#remove_unaligned_2spk"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#klass_osd.pipelines.data_processing.nodes.remove_unaligned_2spk" title="Permalink to this definition"></a></dt>
+<dd><p>Remove unaligned rows from a DataFrame based on a list of numbers.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>dataset</strong> (<em>pandas.DataFrame</em>) – The input DataFrame.</p></li>
+<li><p><strong>unaligned_df</strong> (<em>pandas.DataFrame</em>) – The DataFrame containing the unaligned numbers.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The filtered DataFrame with unaligned rows removed.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>pandas.DataFrame</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="klass_osd.pipelines.data_processing.nodes.remove_unaligned_3spk">
+<span class="sig-prename descclassname"><span class="pre">klass_osd.pipelines.data_processing.nodes.</span></span><span class="sig-name descname"><span class="pre">remove_unaligned_3spk</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dataset</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">unaligned_df</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/klass_osd/pipelines/data_processing/nodes.html#remove_unaligned_3spk"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#klass_osd.pipelines.data_processing.nodes.remove_unaligned_3spk" title="Permalink to this definition"></a></dt>
+<dd><p>Remove unaligned rows from a DataFrame based on a list of numbers.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>dataset</strong> (<em>pandas.DataFrame</em>) – The input DataFrame.</p></li>
+<li><p><strong>unaligned_df</strong> (<em>pandas.DataFrame</em>) – The DataFrame containing the unaligned numbers.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The filtered DataFrame with unaligned rows removed.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>pandas.DataFrame</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="klass_osd.pipelines.data_processing.nodes.update_metadata_2spk">
+<span class="sig-prename descclassname"><span class="pre">klass_osd.pipelines.data_processing.nodes.</span></span><span class="sig-name descname"><span class="pre">update_metadata_2spk</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">metadata_df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dataset</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">unaligned_df</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/klass_osd/pipelines/data_processing/nodes.html#update_metadata_2spk"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#klass_osd.pipelines.data_processing.nodes.update_metadata_2spk" title="Permalink to this definition"></a></dt>
+<dd><p>Updates the metadata dataframe with start and stop times for each source and
+removes unaligned data.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>metadata_df</strong> (<em>pandas.DataFrame</em>) – The metadata dataframe to update.</p></li>
+<li><p><strong>dataset</strong> (<em>pandas.DataFrame</em>) – The dataframe containing unique IDs and start/stop</p></li>
+<li><p><strong>times.</strong> – </p></li>
+<li><p><strong>unaligned_df</strong> (<em>pandas.DataFrame</em>) – The unaligned dataframe to remove from</p></li>
+<li><p><strong>metadata.</strong> (<em>the</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The updated metadata dataframe.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>pandas.DataFrame</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="klass_osd.pipelines.data_processing.nodes.update_metadata_3spk">
+<span class="sig-prename descclassname"><span class="pre">klass_osd.pipelines.data_processing.nodes.</span></span><span class="sig-name descname"><span class="pre">update_metadata_3spk</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">metadata_df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dataset</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">unaligned_df</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/klass_osd/pipelines/data_processing/nodes.html#update_metadata_3spk"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#klass_osd.pipelines.data_processing.nodes.update_metadata_3spk" title="Permalink to this definition"></a></dt>
+<dd><p>Updates the metadata dataframe with start and stop times for each source and
+removes unaligned data.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>metadata_df</strong> (<em>pandas.DataFrame</em>) – The metadata dataframe to update.</p></li>
+<li><p><strong>dataset</strong> (<em>pandas.DataFrame</em>) – The dataframe containing unique IDs and start/stop</p></li>
+<li><p><strong>times.</strong> – </p></li>
+<li><p><strong>unaligned_df</strong> (<em>pandas.DataFrame</em>) – The unaligned dataframe to remove from</p></li>
+<li><p><strong>metadata.</strong> (<em>the</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The updated metadata dataframe.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>pandas.DataFrame</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="module-klass_osd.pipelines.data_processing.pipeline">
+<span id="klass-osd-pipelines-data-processing-pipeline-module"></span><h2>klass_osd.pipelines.data_processing.pipeline module<a class="headerlink" href="#module-klass_osd.pipelines.data_processing.pipeline" title="Permalink to this heading"></a></h2>
+<p>This is a boilerplate pipeline ‘data_processing’
+generated using Kedro 0.18.14</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="klass_osd.pipelines.data_processing.pipeline.create_pipeline">
+<span class="sig-prename descclassname"><span class="pre">klass_osd.pipelines.data_processing.pipeline.</span></span><span class="sig-name descname"><span class="pre">create_pipeline</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/klass_osd/pipelines/data_processing/pipeline.html#create_pipeline"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#klass_osd.pipelines.data_processing.pipeline.create_pipeline" title="Permalink to this definition"></a></dt>
+<dd><p>Create a Kedro pipeline for generating time labels for non-speech/one/two/three
+speakers for librimix dataset.</p>
+<p>Args:</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">Pipeline</span></code></span></p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A Kedro pipeline that takes in raw metadata json files and .txt files and
+generates processed labels for Sparselibrimix/librimix dataset.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="module-klass_osd.pipelines.data_processing">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-klass_osd.pipelines.data_processing" title="Permalink to this heading"></a></h2>
+<p>This is a boilerplate pipeline ‘data_processing’
+generated using Kedro 0.19.1</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="klass_osd.pipelines.data_processing.create_pipeline">
+<span class="sig-prename descclassname"><span class="pre">klass_osd.pipelines.data_processing.</span></span><span class="sig-name descname"><span class="pre">create_pipeline</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/klass_osd/pipelines/data_processing/pipeline.html#create_pipeline"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#klass_osd.pipelines.data_processing.create_pipeline" title="Permalink to this definition"></a></dt>
+<dd><p>Create a Kedro pipeline for generating time labels for non-speech/one/two/three
+speakers for librimix dataset.</p>
+<p>Args:</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">Pipeline</span></code></span></p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A Kedro pipeline that takes in raw metadata json files and .txt files and
+generates processed labels for Sparselibrimix/librimix dataset.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="klass_osd.pipelines.data_chunks.html" class="btn btn-neutral float-left" title="klass_osd.pipelines.data_chunks package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="klass_osd.pipelines.data_segment.html" class="btn btn-neutral float-right" title="klass_osd.pipelines.data_segment package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, aiap.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
