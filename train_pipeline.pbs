@@ -1,0 +1,14 @@
+#!/bin/bash
+#PBS -q normal         
+#PBS -N wavlm_model_training_on_LS_via_FT-DH3
+#PBS -l ngpus=1       
+#PBS -l walltime=5:00:00  
+#PBS -l mem=100gb       
+#PBS -j oe             
+
+source activate klass2  
+cd '/home/users/ntu/scsekyad/scratch/OSD/final deployment package/klass-osd-kedro-pipeline/klass-osd'
+
+kedro run --pipeline wavlm_model_training
+
+conda deactivate
