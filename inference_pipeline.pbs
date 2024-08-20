@@ -1,0 +1,15 @@
+#!/bin/bash
+#PBS -q normal         
+#PBS -N wavlm_model_prediction_LS_FT_DH3-LS
+#PBS -l ngpus=1
+#PBS -l walltime=10:00:00  
+#PBS -l mem=300gb       
+#PBS -j oe             
+
+source activate klass2  
+cd '/home/users/ntu/scsekyad/scratch/OSD/final deployment package/klass-osd-kedro-pipeline/klass-osd'
+
+kedro run --node=prediction_labels_and_report_eval
+
+conda deactivate
+

@@ -1,0 +1,1 @@
+Pre-trained WavLM model fine-tuned on DIHARD3 dataset and further fine-tuned on the LibriSpeech dataset. Inference performed on this fine-tuned model using LibriSpeech Dataset.
