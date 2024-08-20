@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Data Pipeline &amp; Model Training &mdash; klass-osd 1.0.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="_static/jquery.js?v=5d32c60e"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js?v=af2ce170"></script>
+        <script src="_static/doctools.js?v=888ff710"></script>
+        <script src="_static/sphinx_highlight.js?v=4825356b"></script>
+        <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="_static/copybutton.js?v=f281be69"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Environment Setup for Inference Module" href="readme-env_setup_inference.html" />
+    <link rel="prev" title="Environment Setup for Data Preparation &amp; Model Training" href="readme-env_setup_train.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            klass-osd
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="readme-toc.html">Table of Contents</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="readme-toc.html#data-pipeline-model-training">Data Pipeline &amp; Model Training</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="readme-file_struc_train.html">A tree of files and folder structure for model training</a></li>
+<li class="toctree-l3"><a class="reference internal" href="readme-env_setup_train.html">Environment Setup for Data Preparation &amp; Model Training</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Data Pipeline &amp; Model Training</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#overview">Overview</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#setup">Setup</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#running-the-pipeline">Running the Pipeline</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#pipeline-modifications">Pipeline Modifications</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="readme-toc.html#inference-module">Inference Module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="readme-toc.html#others">Others</a></li>
+<li class="toctree-l2"><a class="reference internal" href="readme-toc.html#reference-documentation">Reference Documentation</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">klass-osd</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="readme-toc.html">Table of Contents</a></li>
+      <li class="breadcrumb-item active">Data Pipeline &amp; Model Training</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/readme-model_training.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="data-pipeline-model-training">
+<span id="readme-model-training"></span><h1>Data Pipeline &amp; Model Training<a class="headerlink" href="#data-pipeline-model-training" title="Permalink to this heading"></a></h1>
+<section id="overview">
+<h2>Overview<a class="headerlink" href="#overview" title="Permalink to this heading"></a></h2>
+<section id="architecture">
+<h3>Architecture<a class="headerlink" href="#architecture" title="Permalink to this heading"></a></h3>
+<p>Refer to the following resources referenced for the model architecture used in Klass OSD.</p>
+<ol class="arabic simple">
+<li><p><a class="reference external" href="https://arxiv.org/pdf/2110.13900.pdf">WavLM: Large-Scale Self-Supervised Pre-Training for Full Stack Speech Processing</a></p></li>
+<li><p><a class="reference external" href="https://hal.science/hal-03770634v1/file/Interspeech2022_v5.pdf">Overlapped speech and gender detection with WavLM pre-trained features</a></p></li>
+<li><p><a class="reference external" href="https://arxiv.org/pdf/2210.14755.pdf">Multitask Detection of Speaker Changes, Overlapping Speech and Voice Activity Using wav2vec 2.0</a></p></li>
+<li><p><a class="reference external" href="https://huggingface.co/docs/transformers/en/model_doc/wavlm#transformers.WavLMForAudioFrameClassification">WavLM for Audio Frame Classification</a></p></li>
+</ol>
+<p>The WavLM model uses a Transformer model as the backbone. It contains a convolutional feature encoder and a Transformer encoder. The convolutional encoder is composed of seven blocks of temporal convolution followed by layer normalization and a GELU activation layer. The temporal convolutions have 512 channels with strides (5,2,2,2,2,2,2) and kernel widths (10,3,3,3,3,2,2). The convolutional output representation is masked as
+the Transformer input. The Transformer is equipped with a convolution-based relative position embedding layer with 128 kernel size and 16 groups at the bottom, with gated relative position bias. We are using the WavLM Base+ which has 12 Transformer encoder layers, 768-dimensional hidden states, and 8 attention heads, resulting in 94.70M parameters. A linear classifier is placed on the final layer for classification of the audio sequence. The model objective is for Overlapped Speech Detection.</p>
+<p><strong>Model Size</strong></p>
+<ul class="simple">
+<li><p>94.70M parameters</p></li>
+</ul>
+<p><strong>Input</strong></p>
+<ul class="simple">
+<li><p>Audio file(s) of .wav format, sampling rate of 16kHz.</p></li>
+</ul>
+<p><strong>Output</strong></p>
+<ul class="simple">
+<li><p>The trained model, and a parquet file of the predicted labels on the datasets used for testing.</p></li>
+</ul>
+<p><strong>Intended Use</strong></p>
+<ul class="simple">
+<li><p>The model is trained to predict if a particular audio chunk is overlapped speech or not. It takes audio chunks as input and outputs a prediction of whether the input is overlapped speech or not. When served in our inference module, it identifies the overlapped speech portions in an audio clip recorded by a far-field microphone, within a meeting room setting. The inference module takes a raw audio as input and outputs a prediction of the overlapped speech regions.</p></li>
+</ul>
+<p><strong>Metrics</strong></p>
+<ul class="simple">
+<li><p>Model performance was measured using the F1-Score metric on overlapped speech detection.</p></li>
+</ul>
+<p id="readme-datasets"><strong>Training Data</strong></p>
+<ul class="simple">
+<li><p>The Model is trained on a sample of <a class="reference external" href="https://github.com/JorisCos/LibriMix/">Libri2Mix</a> training dataset. The sample contains 84 hours of English audio files with 2 speakers with portions of overlappped speech.</p></li>
+<li><p>The training data is mono-channel and at a sample rate of 16kHz. Alignments for the dataset were not available in the same folder, and instead downloaded at the <a class="reference external" href="https://github.com/CorentinJ/librispeech-alignments/">simple, condensed format google drive link found here</a>.</p></li>
+</ul>
+<p><strong>Evaluation Data</strong></p>
+<ul class="simple">
+<li><p>The Model is evaluated on the evaluation dataset in <a class="reference external" href="https://github.com/JorisCos/LibriMix/">Libri2Mix</a>, which contains 26h of audio files.</p></li>
+</ul>
+<p><strong>Test Data</strong></p>
+<ul class="simple">
+<li><p>The Model is evaluated on (1) the test dataset in <a class="reference external" href="https://github.com/JorisCos/LibriMix/">Libri2Mix</a> containing 25h of audio files, and (2) the <a class="reference external" href="https://github.com/popcornell/SparseLibriMix/">SparseLibrimix Dataset</a> containing 6h of audio files.</p></li>
+</ul>
+<p id="readme-augmentation"><strong>Augmentation Source Files</strong></p>
+<ul>
+<li><dl>
+<dt>There are two sources for the augmentation proposed in the kedro pipeline.</dt><dd><ul>
+<li><ol class="arabic simple">
+<li><p>Short noises source: <a class="reference external" href="https://github.com/karolpiczak/ESC-50/">ESC-50</a></p></li>
+</ol>
+<blockquote>
+<div><ul class="simple">
+<li><p>Filtered to these categories: ‘door_wood_knock’, ‘mouse_click’, ‘keyboard_typing’, ‘coughing’, ‘sneezing’</p></li>
+<li><p>Filtered to exclude files under non-commercial terms</p></li>
+<li><p>Resampled to 16 kHz</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><ol class="arabic simple" start="2">
+<li><p>Room Impulse Responses source: <a class="reference external" href="https://speech.fit.vutbr.cz/software/but-speech-fit-reverb-database/">BUT Speech&#64;FIT Reverb</a></p></li>
+</ol>
+<blockquote>
+<div><ul class="simple">
+<li><p>Filtered to include RIRs for: Office &amp; Meeting room settings only (Rooms tagged: Q301, L207, L212, C236)</p></li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p>Final set of augmentation files provided in zip file in basecamp: augmentations.zip</p></li>
+</ul>
+<p><strong>Limitations</strong></p>
+<ul class="simple">
+<li><p>As the original datasets provided were not really resembling recordings from meetings, there may be some biases and inaccuracies when applying the model for meeting room recordings. We have tried to augment the files as best as possible using short noises resembling that found in a meeting room setting, as well as room impulse responses that would be relevant for such environment settings.</p></li>
+</ul>
+<p><strong>Interpretability</strong></p>
+<ul class="simple">
+<li><p>There is limited ability to interpret how the model makes it’s prediction due to the innate nature of the neural network model.</p></li>
+</ul>
+</section>
+<section id="choice-of-models">
+<h3>Choice of models<a class="headerlink" href="#choice-of-models" title="Permalink to this heading"></a></h3>
+<p>Trials were conducted between Pyannote, Wav2Vec 2.0, WavLM. The WavLM model was chosen due to its fast inference speed. Therefore, this training pipeline has been developed focusing on the WavLM model.</p>
+</section>
+</section>
+<hr class="docutils" />
+<section id="setup">
+<h2>Setup<a class="headerlink" href="#setup" title="Permalink to this heading"></a></h2>
+<p><strong>Note</strong>: The following provided tree structures in this section only covers the raw data folder. For detailed tree diagram, <a class="reference internal" href="readme-file_struc_train.html#readme-file-struc-train"><span class="std std-ref">refer to this tree image</span></a></p>
+<section id="stage-1-prepare-raw-datasets">
+<h3>Stage 1: Prepare Raw Datasets<a class="headerlink" href="#stage-1-prepare-raw-datasets" title="Permalink to this heading"></a></h3>
+<p>This section covers preparing the <a class="reference internal" href="#readme-datasets"><span class="std std-ref">above-mentioned Libri2Mix and Sparselibrimix</span></a> datasets for running in the kedro pipeline.</p>
+<p>Follow the steps below:</p>
+<ol class="arabic simple">
+<li><dl class="simple">
+<dt><strong>Download the datasets and follow the instructions in the repositories to generate the raw files.</strong></dt><dd><ul class="simple">
+<li><p><a class="reference external" href="https://github.com/JorisCos/LibriMix/">LibriMix</a></p></li>
+<li><p><a class="reference external" href="https://github.com/CorentinJ/librispeech-alignments/">Librispeech Alignmenets: the simple, condensed format google drive link found here</a></p></li>
+<li><p><a class="reference external" href="https://github.com/popcornell/SparseLibriMix/">SparseLibrimix Dataset</a></p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p><strong>Place the downloaded/generated files in the folder klass-osd/data/01_raw.</strong></p></li>
+</ol>
+<p>After following the instructions above, the folder structure should look like this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>└── 📁klass-osd/data
+    └── 📁01_raw
+        └── 📁LibriMix
+            └── 📁metadata
+                └── 📁Libri2Mix
+                └── ...
+            └── ...
+        └── 📁librimix_storage_dir
+            └── 📁Libri2Mix
+                └── 📁wav16k/max
+                    └── 📁dev
+                    └── 📁metadata
+                    └── 📁test
+                    └── 📁train-100
+                    └── 📁train-360
+                └── ...
+            └── ...
+        └── 📁librispeech-alignments
+            └── 📁LibriSpeech
+            └── unaligned.txt
+        └── 📁SparseLibriMix
+            └── 📁metadata
+                └── 📁sparse_2_0
+                └── 📁sparse_2_0.2
+                └── 📁sparse_2_0.4
+                └── ...
+            └── 📁...
+        └── 📁sparselibrimix_storage_dir/to_listen/sparse_libri_def
+            └── 📁sparse_2_0
+            └── 📁sparse_2_0.2
+            └── 📁sparse_2_0.4
+            └── ...
+        └── ...
+</pre></div>
+</div>
+</section>
+<section id="stage-2-prepare-augmentation-files">
+<h3>Stage 2: Prepare Augmentation Files<a class="headerlink" href="#stage-2-prepare-augmentation-files" title="Permalink to this heading"></a></h3>
+<p>The <a class="reference internal" href="#readme-augmentation"><span class="std std-ref">above-mentioned</span></a> short noise and room impulse response datasets are used for the augmentation pipeline.</p>
+<p><strong>Download the</strong> <code class="docutils literal notranslate"><span class="pre">augmentations.zip</span></code> <strong>file. Unzip the file and place the augmentations folder in the folder</strong> <code class="docutils literal notranslate"><span class="pre">klass-osd/data/01_raw</span></code>.</p>
+<p>After following the instructions above, the folder structure should look like this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>└── 📁klass-osd/data
+    └── 📁01_raw
+        └── 📁augmentations
+            └── 📁rirs
+            └── 📁short_noises
+        └── ...
+</pre></div>
+</div>
+</section>
+<section id="stage-3-update-kedro-data-catalog-and-parameters-file-optional">
+<h3>Stage 3: Update Kedro Data Catalog and Parameters File (optional)<a class="headerlink" href="#stage-3-update-kedro-data-catalog-and-parameters-file-optional" title="Permalink to this heading"></a></h3>
+<p>(Only if you placed the data files in stage 1 &amp; 2 in different folders from those specified or want to customize file paths)</p>
+<ol class="arabic simple">
+<li><p><strong>Edit the Data Catalog</strong>:</p></li>
+</ol>
+<p>Kedro uses a data catalog to manage datasets. This catalog is defined in the klass-osd/conf/base/catalog.yml file and describes where each dataset is read from or written to. It also relies on the data catalog and specified inputs and outputs to pipelines to determine the order of running the nodes.</p>
+<p><strong>Example:</strong>
+The catalog.yml contains definitions for various datasets. Here’s a snippet:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">libri2mix_clean_detailed_datasets_detailed</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pandas.CSVDataset</span>
+<span class="w">    </span><span class="nt">filepath</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">data/02_intermediate/hash_libri2_detailed/libri2mix_clean_detailed_datasets_final.csv</span>
+</pre></div>
+</div>
+<p>In this example:</p>
+<ul class="simple">
+<li><p><strong>libri2mix_clean_detailed_datasets_detailed</strong> is the name of the dataset.</p></li>
+<li><p><strong>filepath</strong> specifies where the data files for this dataset are located.</p></li>
+<li><p>If you are using a different folder setup, please update the path accordingly.</p></li>
+</ul>
+<ol class="arabic simple" start="2">
+<li><p><strong>Edit the Parameters</strong>:</p></li>
+</ol>
+<p>The <code class="docutils literal notranslate"><span class="pre">klass-osd/conf/base/parameters.yml</span></code> in this kedro pipeline contains some filepaths especially to the raw audio files, or intermediate files generated in the pipeline. It also contains parameters for experimentation eg. duration of chunk sizes, augmentation parameters, model training parameters.</p>
+<p><strong>Example:</strong>
+Here’s a snippet from the parameters.yml specifying :</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">librimix_audio_folder</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">librimix_audio_folder</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">data/01_raw/librimix_storage_dir</span>
+<span class="w">    </span><span class="nt">librimix_audio_folder_metadata_libri2</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">data/02_intermediate/Libri2Mix/wav16k/max/metadata/</span>
+<span class="w">    </span><span class="nt">folder_freq</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;wav16k&quot;</span>
+<span class="w">    </span><span class="nt">audio_freq</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">16000</span>
+<span class="w">    </span><span class="nt">folder_audio_mix_length</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;max&quot;</span>
+<span class="w">    </span><span class="nt">folder_mix_type</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;mix_clean&quot;</span>
+<span class="w">    </span><span class="nt">audio_background</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;clean&quot;</span>
+</pre></div>
+</div>
+<p>In this example:</p>
+<ul class="simple">
+<li><p><strong>librimix_audio_folder</strong> is the name of the dictionary storing these parameters.</p></li>
+<li><p><strong>librimix_audio_folder.librimix_audio_folder</strong> specifies the filepath where the raw audio data is saved.</p></li>
+<li><p><strong>librimix_audio_folder.librimix_audio_folder_metadata_libri2</strong> specifies the filepath where the intermediate parquet file storing the labels is saved.</p></li>
+<li><p>If you are using a different folder setup, please update the paths accordingly.</p></li>
+</ul>
+<p>More details on configuring the parameters for <a class="reference internal" href="#readme-modify-data-experimentation"><span class="std std-ref">data experimentation</span></a>, <a class="reference internal" href="#readme-modify-data-augmentation"><span class="std std-ref">data augmentation</span></a> and <a class="reference internal" href="#readme-modify-model-experimentation"><span class="std std-ref">model experimentation</span></a> will be covered below.</p>
+</section>
+</section>
+<hr class="docutils" />
+<section id="running-the-pipeline">
+<h2>Running the Pipeline<a class="headerlink" href="#running-the-pipeline" title="Permalink to this heading"></a></h2>
+<section id="instructions-for-running">
+<h3>Instructions for Running<a class="headerlink" href="#instructions-for-running" title="Permalink to this heading"></a></h3>
+<p><strong>Navigate to the</strong> <code class="docutils literal notranslate"><span class="pre">klass-osd</span></code> <strong>folder.</strong> Use the cli to run the pipeline. The default <code class="docutils literal notranslate"><span class="pre">kedro</span> <span class="pre">run</span></code> or <code class="docutils literal notranslate"><span class="pre">kedro</span> <span class="pre">run</span> <span class="pre">--runner=SequentialRunner</span></code> (SequentialRunner is used if none is specified) can be used to run the full pipeline.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># run the full pipeline</span>
+$<span class="w"> </span>kedro<span class="w"> </span>run
+</pre></div>
+</div>
+<p>For debugging purposes or to view individual outputs from each pipeline, you can run individual pipelines one by one:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># run each pipeline separately</span>
+$<span class="w"> </span>kedro<span class="w"> </span>run<span class="w"> </span>--pipeline<span class="w"> </span>data_processing
+$<span class="w"> </span>kedro<span class="w"> </span>run<span class="w"> </span>--pipeline<span class="w"> </span>create_hashing_dataset_libri2mix_detailed
+$<span class="w"> </span>kedro<span class="w"> </span>run<span class="w"> </span>--pipeline<span class="w"> </span>data_validation_training_for_wavLM
+$<span class="w"> </span>kedro<span class="w"> </span>run<span class="w"> </span>--pipeline<span class="w"> </span>data_600ms_chunks
+$<span class="w"> </span>kedro<span class="w"> </span>run<span class="w"> </span>--pipeline<span class="w"> </span>data_chunks
+$<span class="w"> </span>kedro<span class="w"> </span>run<span class="w"> </span>--pipeline<span class="w"> </span>data_segment
+$<span class="w"> </span>kedro<span class="w"> </span>run<span class="w"> </span>--pipeline<span class="w"> </span>wavlm_hf_dataset
+$<span class="w"> </span>kedro<span class="w"> </span>run<span class="w"> </span>--pipeline<span class="w"> </span>wavlm_model_training
+$<span class="w"> </span>kedro<span class="w"> </span>run<span class="w"> </span>--pipeline<span class="w"> </span>model_prediction
+</pre></div>
+</div>
+</section>
+<section id="training-without-augmentation-and-hyperparameter-optimization">
+<h3>Training without Augmentation and Hyperparameter Optimization<a class="headerlink" href="#training-without-augmentation-and-hyperparameter-optimization" title="Permalink to this heading"></a></h3>
+<p>When we run <code class="docutils literal notranslate"><span class="pre">kedro</span> <span class="pre">run</span></code>, the following stages are applied:</p>
+<img alt="Pipeline Architecture - Training without Augmentation and Hyperparameter Optimization" src="_images/KLASS_kedro_pipelines.drawio.png" />
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">data_processing</span></code> pipeline runs to generate overlapped speech labels from raw data Libri2Mix and Sparselibri2mix (#1 in pipeline).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">create_hashing_dataset_libri2mix_detailed</span></code> pipeline runs to sample and hash Libri2Mix dataset (#2 in pipeline).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">data_validation_training_for_wavLM</span></code> pipeline runs to validate Libri2Mix training and evaluation datasets (#3 in pipeline).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">data_600ms_chunks</span></code> pipeline runs to chunk Sparselibri2mix audio into 600ms chunks with labels (#4-6 in pipeline).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">data_chunks</span></code> pipeline runs to chunk Libri2Mix test and evaluation audio into 600ms chunks with labels (#4-6 in pipeline).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">data_segment</span></code> pipeline runs to create segments from train audio with labels (#4-6 in pipeline).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">wavlm_hf_dataset</span></code> pipeline runs to curate Libri2Mix and Sparselibri2mix datasets in huggingface format (#7 in pipeline).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">wavlm_model_training</span></code> pipeline runs to finetune the WavLM model (#8 in pipeline).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">model_prediction</span></code> pipeline runs to use the finetuned model to generate predictions, and metrics for evaluation (#9 in pipeline).</p></li>
+</ul>
+<p>All of the catalog and parameter files have been preconfigured for normal usage, i.e. the aforementioned run. You may wish to continue through the next section of the documentation below for pipeline modifications.</p>
+</section>
+</section>
+<hr class="docutils" />
+<section id="pipeline-modifications">
+<h2>Pipeline Modifications<a class="headerlink" href="#pipeline-modifications" title="Permalink to this heading"></a></h2>
+<p>The subsequent guides outlines steps for specific modifications.</p>
+<section id="modify-for-data-experimentation">
+<span id="readme-modify-data-experimentation"></span><h3>Modify for Data Experimentation<a class="headerlink" href="#modify-for-data-experimentation" title="Permalink to this heading"></a></h3>
+<p>In the <code class="docutils literal notranslate"><span class="pre">klass-osd/conf/base/parameters.yml</span></code> file, we can change the settings for data experimentation purposes.</p>
+<p>For example, we may wish to train based on:</p>
+<ul class="simple">
+<li><p>chunk all the evaluation and test samples into chunks of <code class="docutils literal notranslate"><span class="pre">chunk_seconds:</span> <span class="pre">0.4</span></code> instead of the current 0.6:</p></li>
+</ul>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">save_annotated_chunks_libri2_mix_in_parts</span><span class="p">:</span>
+<span class="c1"># wave_type_list: List of wave types to choose from. valid values: &#39;wav16k&#39;, &#39;wav8k&#39;</span>
+<span class="c1"># mixture_type_list: List of mixture types to choose from valid values: &#39;both&#39;, &#39;clean&#39;</span>
+<span class="c1"># split_type_list: List of split types to choose from valid values: &#39;dev&#39;, &#39;test&#39;, &#39;train-100&#39;</span>
+<span class="c1"># chunk_seconds: chunk period in seconds (float)</span>
+<span class="c1"># part_type_list: List of part types based on split_type (dev or test)</span>
+<span class="c1"># train100_part_type_list: List of part types based on split_type (train-100)</span>
+<span class="c1"># part_type_list: For &#39;dev&#39; and &#39;test&#39;, valid values are [&#39;part1&#39;, &#39;part2&#39;]</span>
+<span class="c1"># train100_part_type_list: For &#39;train-100&#39;, there are 10 parts [&#39;part1&#39;, &#39;part2&#39;, &#39;part3&#39;... &#39;part10&#39;]</span>
+<span class="w">    </span><span class="nt">wave_type_list</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;wav16k&quot;</span><span class="p p-Indicator">]</span>
+<span class="w">    </span><span class="nt">mixture_type_list</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;clean&quot;</span><span class="p p-Indicator">]</span>
+<span class="w">    </span><span class="nt">split_type_list</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;dev&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;test&quot;</span><span class="p p-Indicator">]</span>
+<span class="w">    </span><span class="nt">train100_split_type_list</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;train-100&quot;</span><span class="p p-Indicator">]</span>
+<span class="w">    </span><span class="nt">num_speaker_mix</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Libri2Mix&quot;</span>
+<span class="w">    </span><span class="nt">chunk_seconds</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.4</span>
+<span class="w">    </span><span class="nt">part_type_list</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;part1&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;part2&quot;</span><span class="p p-Indicator">]</span>
+<span class="w">    </span><span class="nt">train100_part_type_list</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;part1&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;part2&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;part3&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;part4&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;part5&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;part6&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;part7&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;part8&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;part9&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;part10&quot;</span><span class="p p-Indicator">]</span>
+<span class="w">    </span><span class="nt">metadata_directory_pathway</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">data/02_intermediate/</span>
+<span class="w">    </span><span class="nt">file_extension</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;_2mix_osd_labels.parquet.gzip&quot;</span>
+<span class="w">    </span><span class="nt">librimix_audio_folder</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">data/01_raw/librimix_storage_dir</span>
+<span class="w">    </span><span class="nt">batchsize</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">200</span>
+</pre></div>
+</div>
+</section>
+<section id="modify-for-data-augmentation">
+<span id="readme-modify-data-augmentation"></span><h3>Modify for Data Augmentation<a class="headerlink" href="#modify-for-data-augmentation" title="Permalink to this heading"></a></h3>
+<p>In the <code class="docutils literal notranslate"><span class="pre">klass-osd/conf/base/parameters.yml</span></code> file, we can change the settings for data augmentation purposes.
+The augmentations configured are in this order:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Time Stretch</p></li>
+<li><p>Pitch Shift</p></li>
+<li><p>Reverbs</p></li>
+<li><p>Short Noises</p></li>
+<li><p>Gaussian Noise</p></li>
+</ul>
+</div></blockquote>
+<p>The relevant section for augmentation from the <code class="docutils literal notranslate"><span class="pre">parameters.yml</span></code> file is as follows:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">curate_hf_dataset_augment</span><span class="p">:</span>
+<span class="w">    </span><span class="c1"># To run augmented datasets or not</span>
+<span class="w">    </span><span class="nt">augmented</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">False</span>
+<span class="w">    </span><span class="nt">output_folder_path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">data/05_model_input</span>
+<span class="w">    </span><span class="nt">dataset_type_train</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;augment_train&quot;</span>
+<span class="w">    </span><span class="nt">dataset_type_eval</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;augment_eval&quot;</span>
+<span class="w">    </span><span class="nt">encoded</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">True</span>
+<span class="w">    </span><span class="nt">feature_extractor</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;microsoft/wavlm-base-plus&quot;</span>
+<span class="w">    </span><span class="nt">augment_config</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">sr</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">16000</span>
+<span class="w">        </span><span class="nt">time_stretch</span><span class="p">:</span>
+<span class="w">            </span><span class="nt">min</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.8</span>
+<span class="w">            </span><span class="nt">max</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1.2</span>
+<span class="w">        </span><span class="nt">pitch_shift</span><span class="p">:</span>
+<span class="w">            </span><span class="nt">min</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">-2</span>
+<span class="w">            </span><span class="nt">max</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2</span>
+<span class="w">        </span><span class="nt">reverbs</span><span class="p">:</span>
+<span class="w">            </span><span class="nt">ir_path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">data/01_raw/augmentations/rirs/BUT/filtered</span>
+<span class="w">            </span><span class="nt">probability</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
+<span class="w">        </span><span class="nt">short_noise</span><span class="p">:</span>
+<span class="w">            </span><span class="nt">short_noise_path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">data/01_raw/augmentations/short_noises/filtered-16khz</span>
+<span class="w">            </span><span class="nt">min_snr</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3</span>
+<span class="w">            </span><span class="nt">max_snr</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">15</span>
+<span class="w">            </span><span class="nt">noise_rms</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;relative_to_whole_input&quot;</span>
+<span class="w">            </span><span class="nt">min_time_between_sounds</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2</span>
+<span class="w">            </span><span class="nt">max_time_between_sounds</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">8</span>
+<span class="w">            </span><span class="nt">probability</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
+<span class="w">        </span><span class="nt">gaussian_noise</span><span class="p">:</span>
+<span class="w">            </span><span class="nt">min_amp</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.001</span>
+<span class="w">            </span><span class="nt">max_amp</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.003</span>
+<span class="w">            </span><span class="nt">probability</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
+</pre></div>
+</div>
+<p>The augmentations utilize the library audiomentations. You may wish to explore the documentation for <a href="#id4"><span class="problematic" id="id5">`audiomentations here&lt;https://iver56.github.io/audiomentations/&gt;`_</span></a>.</p>
+<ol class="arabic simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">curate_hf_dataset_augment.augmented</span></code> to be set to <code class="docutils literal notranslate"><span class="pre">True</span></code> which will generate the augmented train and evaluation datasets.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">curate_hf_dataset_augment.augment_config.time_stretch.min/max</span></code> defines the range of time stretch factors to be applied in augmentation.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">curate_hf_dataset_augment.augment_config.pitch_shift.min/max</span></code> defines the range of pitch shift semitones to be applied in augmentation.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">curate_hf_dataset_augment.augment_config.reverbs.probability</span></code> set to 1 to include and 0 to exclude RIRs from augmentation steps.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">curate_hf_dataset_augment.augment_config.short_noise.probability</span></code> set to 1 to include and 0 to exclude short noises from augmentation steps.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">curate_hf_dataset_augment.augment_config.short_noise.min_snr/max_snr</span></code> defines the range of SNR of short noises to be applied in augmentation.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">curate_hf_dataset_augment.augment_config.short_noise.min_time_between_sounds/max_time_between_sounds</span></code> defines how often the short noises are applied in 1 clip.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">curate_hf_dataset_augment.augment_config.gaussian_noise.probability</span></code> set to 1 to include and 0 to exclude RIRs from augmentation steps.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">curate_hf_dataset_augment.augment_config.gaussian_noise.min_amp/max_amp</span></code> defines the range of ampitude of gaussian noises to be applied in augmentation.</p></li>
+</ol>
+<p>The limits for parameters 2-9 can be found in the <a href="#id6"><span class="problematic" id="id7">`audiomentations library&lt;https://iver56.github.io/audiomentations/&gt;`_</span></a>.</p>
+<p>TO DO: Include instructions for running models with augmented data in different proportions.</p>
+</section>
+<section id="modify-for-model-experimentation">
+<span id="readme-modify-model-experimentation"></span><h3>Modify for Model Experimentation<a class="headerlink" href="#modify-for-model-experimentation" title="Permalink to this heading"></a></h3>
+<p>In the <code class="docutils literal notranslate"><span class="pre">klass-osd/conf/base/parameters.yml</span></code> file, we can change the settings for model experimentation purposes.
+The relevant section for model settings from the <code class="docutils literal notranslate"><span class="pre">parameters.yml</span></code> file is as follows:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="c1"># wavlm training parameters</span>
+<span class="nt">wavlm_training_args_config</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">repo_name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;wavlm-both&quot;</span>
+<span class="w">    </span><span class="nt">feature_extractor</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;microsoft/wavlm-base-plus&quot;</span>
+<span class="w">    </span><span class="nt">evaluation_strategy</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;epoch&quot;</span>
+<span class="w">    </span><span class="nt">save_strategy</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;epoch&quot;</span>
+<span class="w">    </span><span class="nt">learning_rate</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.00003</span>
+<span class="w">    </span><span class="nt">per_device_train_batch_size</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">128</span>
+<span class="w">    </span><span class="nt">gradient_accumulation_steps</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
+<span class="w">    </span><span class="nt">per_device_eval_batch_size</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">128</span>
+<span class="w">    </span><span class="nt">num_train_epochs</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3</span>
+<span class="w">    </span><span class="nt">warmup_ratio</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.1</span>
+<span class="w">    </span><span class="nt">logging_steps</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">10</span>
+<span class="w">    </span><span class="nt">load_best_model_at_end</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">True</span>
+<span class="w">    </span><span class="nt">metric_for_best_model</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;f1&quot;</span>
+<span class="w">    </span><span class="nt">sampling_rate</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">16000</span>
+<span class="w">    </span><span class="nt">seed</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">42</span>
+<span class="w">    </span><span class="nt">audio_classification_model</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;microsoft/wavlm-base-plus&quot;</span>
+
+<span class="nt">early_stopping_config</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">early_stopping_patience</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">5</span>
+<span class="w">    </span><span class="nt">early_stopping_threshold</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0.001</span>
+
+<span class="nt">wavlm_model_parameters_config</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">num_labels</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3</span>
+<span class="w">    </span><span class="nt">mask_time_length</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
+</pre></div>
+</div>
+</section>
+<section id="modify-for-testing-on-new-dataset">
+<h3>Modify for Testing on New Dataset<a class="headerlink" href="#modify-for-testing-on-new-dataset" title="Permalink to this heading"></a></h3>
+<p>If you have a finetuned WavLM model and would like to carry out model prediction and testing on a new dataset, follow the instructions as follows:</p>
+<ol class="arabic">
+<li><p>Ensure you have the finetuned WavLM model in the <code class="docutils literal notranslate"><span class="pre">klass-osd/data/06_models</span></code> folder. It should look like the following:</p>
+<blockquote>
+<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span>└── 📁klass-osd/data
+    └── 📁06_models
+        └── 📁wavlm/model_training/Libri2Mix/models_wavlm
+            └── config.json
+            └── model.safetensors
+            └── preprocessor_config.json
+            └── training_args.bin
+    └── ...
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+<li><dl>
+<dt>Ensure you have the new dataset in a pickle file, and in hugging face format containing these features:</dt><dd><ul class="simple">
+<li><p>“audio_id”: The name of the audio source file eg. ‘sparse_2_0.2/mix_0000001’</p></li>
+<li><p>“label”: 0 for non-speech, 1 for one-speaker-speech, 2 for overlapped-speech eg. ‘1’</p></li>
+<li><p>“input_values”: The audio signal array in this chunked sample</p></li>
+<li><p>“chunk_filenames”: The name of the audio chunk with timing eg. ‘sparse_2_0.2/mix_0000001_0.0_0.6’</p></li>
+</ul>
+<p>Save this dataset as <code class="docutils literal notranslate"><span class="pre">new_dataset.pkl</span></code> in the <code class="docutils literal notranslate"><span class="pre">klass-osd/data/05_model_input</span></code> folder.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>└── 📁klass-osd/data
+    └── 📁05_model_input
+        └── new_dataset.pkl
+        └── ...
+    └── ...
+</pre></div>
+</div>
+</dd>
+</dl>
+</li>
+<li><p>Check that your dataset has been generated correctly by creating a jupyter notebook with the following code:</p>
+<blockquote>
+<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pickle</span>
+    <span class="k">with</span> <span class="nb">open</span> <span class="p">(</span><span class="s1">&#39;/klass-osd/data/05_model_input.pkl&#39;</span><span class="p">,</span><span class="s1">&#39;rb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="n">pickle</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+
+    <span class="n">data</span>
+</pre></div>
+</div>
+<p>The code, when run, should return the following:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Dataset</span><span class="p">({</span>
+    <span class="n">features</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;audio_id&#39;</span><span class="p">,</span> <span class="s1">&#39;label&#39;</span><span class="p">,</span> <span class="s1">&#39;input_values&#39;</span><span class="p">,</span> <span class="s1">&#39;chunk_filenames&#39;</span><span class="p">],</span>
+    <span class="n">num_rows</span><span class="p">:</span> <span class="p">(</span><span class="n">number</span> <span class="n">of</span> <span class="n">data</span> <span class="n">samples</span> <span class="ow">in</span> <span class="n">your</span> <span class="n">dataset</span><span class="p">)</span>
+<span class="p">})</span>
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+<li><p>In the <code class="docutils literal notranslate"><span class="pre">klass-osd/src/klass_osd/pipelines/model_prediction/pipeline.py</span></code>, add the following on line 55:</p>
+<blockquote>
+<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">node</span><span class="p">(</span>
+    <span class="n">func</span><span class="o">=</span><span class="n">prediction_labels_and_report</span><span class="p">,</span>
+    <span class="n">inputs</span><span class="o">=</span><span class="p">[</span>
+        <span class="s2">&quot;model_training_success&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;new_dataset_test&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;params:wavlm_save_dir_config&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;params:wavlm_training_args_config&quot;</span><span class="p">,</span>
+    <span class="p">],</span>
+    <span class="n">outputs</span><span class="o">=</span><span class="p">[</span>
+        <span class="s2">&quot;predicted_label_new_dataset_df&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;wavlm_new_dataset_report&quot;</span><span class="p">,</span>
+    <span class="p">],</span>
+    <span class="n">name</span><span class="o">=</span><span class="s2">&quot;prediction_labels_and_report_new_dataset&quot;</span><span class="p">,</span>
+<span class="p">),</span>
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+<li><p>In the <code class="docutils literal notranslate"><span class="pre">klass-osd/conf/base/catalog.yml</span></code>, add the following at the end of file:</p>
+<blockquote>
+<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">new_dataset_test</span><span class="p">:</span>
+    <span class="nb">type</span><span class="p">:</span> <span class="n">pickle</span><span class="o">.</span><span class="n">PickleDataSet</span>
+    <span class="n">filepath</span><span class="p">:</span> <span class="n">data</span><span class="o">/</span><span class="mi">05</span><span class="n">_model_input</span><span class="o">/</span><span class="n">new_dataset</span><span class="o">.</span><span class="n">pkl</span>
+    <span class="n">backend</span><span class="p">:</span> <span class="n">pickle</span>
+
+<span class="n">wavlm_new_dataset_report</span><span class="p">:</span>
+    <span class="nb">type</span><span class="p">:</span> <span class="n">json</span><span class="o">.</span><span class="n">JSONDataSet</span>
+    <span class="n">filepath</span><span class="p">:</span> <span class="n">data</span><span class="o">/</span><span class="mi">08</span><span class="n">_reporting</span><span class="o">/</span><span class="n">models_wavlm</span><span class="o">/</span><span class="n">Libri2Mix</span><span class="o">/</span><span class="n">evaluation</span><span class="o">/</span><span class="n">results_fullset_new_dataset</span><span class="o">.</span><span class="n">json</span>
+
+<span class="n">predicted_label_new_dataset_df</span><span class="p">:</span>
+    <span class="nb">type</span><span class="p">:</span> <span class="n">pandas</span><span class="o">.</span><span class="n">ParquetDataset</span>
+    <span class="n">filepath</span><span class="p">:</span> <span class="n">data</span><span class="o">/</span><span class="mi">08</span><span class="n">_reporting</span><span class="o">/</span><span class="n">models_wavlm</span><span class="o">/</span><span class="n">Libri2Mix</span><span class="o">/</span><span class="n">evaluation</span><span class="o">/</span><span class="n">new_dataset_predicted_labels</span><span class="o">.</span><span class="n">parquet</span>
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+<li><p>In the <code class="docutils literal notranslate"><span class="pre">klass-osd</span></code> folder, use the cli to run the following:</p>
+<blockquote>
+<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">kedro</span> <span class="n">run</span> <span class="o">--</span><span class="n">node</span><span class="o">=</span><span class="n">prediction_labels_and_report_new_dataset</span>
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+<li><p>Once the kedro run is finished, the testing results can be found:</p>
+<blockquote>
+<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span>└── 📁klass-osd/data
+    └── 📁08_reporting
+        └── 📁models_wavlm/Libri2Mix/evaluation
+            └── new_dataset_predicted_labels.parquet
+            └── results_fullset_new_dataset.json
+            └── ...
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">new_dataset_predicted_labels.parquet</span></code> gives the chunk_filenames, true labels and predicted labels.
+<code class="docutils literal notranslate"><span class="pre">results_fullset_new_dataset.json</span></code> gives the f1, precision and recall for the labels: 0 for non-speech, 1 for one-speaker-speech, 2 for overlapped-speech; and the confusion matrix.</p>
+</div></blockquote>
+</li>
+</ol>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="readme-env_setup_train.html" class="btn btn-neutral float-left" title="Environment Setup for Data Preparation &amp; Model Training" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="readme-env_setup_inference.html" class="btn btn-neutral float-right" title="Environment Setup for Inference Module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, aiap.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

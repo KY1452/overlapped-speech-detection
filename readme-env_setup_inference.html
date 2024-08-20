@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Environment Setup for Inference Module &mdash; klass-osd 1.0.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="_static/jquery.js?v=5d32c60e"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js?v=af2ce170"></script>
+        <script src="_static/doctools.js?v=888ff710"></script>
+        <script src="_static/sphinx_highlight.js?v=4825356b"></script>
+        <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="_static/copybutton.js?v=f281be69"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Inference Module" href="readme-inference_module.html" />
+    <link rel="prev" title="Data Pipeline &amp; Model Training" href="readme-model_training.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            klass-osd
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="readme-toc.html">Table of Contents</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="readme-toc.html#data-pipeline-model-training">Data Pipeline &amp; Model Training</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="readme-toc.html#inference-module">Inference Module</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Environment Setup for Inference Module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#overview">Overview</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#inference-method-1-deploy-from-pre-built-docker-image">Inference: Method 1 - Deploy from pre-built Docker image</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#inference-method-2-build-your-own-image-optional">Inference Method 2: Build your own Image (OPTIONAL)</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="readme-inference_module.html">Inference Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="readme-inference_module.html#inference-endpoints">Inference Endpoints</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="readme-toc.html#others">Others</a></li>
+<li class="toctree-l2"><a class="reference internal" href="readme-toc.html#reference-documentation">Reference Documentation</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">klass-osd</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="readme-toc.html">Table of Contents</a></li>
+      <li class="breadcrumb-item active">Environment Setup for Inference Module</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/readme-env_setup_inference.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="environment-setup-for-inference-module">
+<span id="readme-env-setup-inference"></span><h1>Environment Setup for Inference Module<a class="headerlink" href="#environment-setup-for-inference-module" title="Permalink to this heading"></a></h1>
+<section id="overview">
+<h2>Overview<a class="headerlink" href="#overview" title="Permalink to this heading"></a></h2>
+<p>This document covers the environment setup for the inference module serving the fine-tuned WavLM model.</p>
+<ul class="simple">
+<li><p>For inference, you can choose to <a class="reference internal" href="#id1"><span class="std std-ref">use pre-built Docker image</span></a> or <a class="reference internal" href="#readme-env-setup-source-repo"><span class="std std-ref">serve from the source repository</span></a> .</p></li>
+<li><p>Both methods require installation of <a class="reference external" href="https://docs.docker.com/desktop/">Docker</a> and <a class="reference external" href="https://docs.docker.com/compose/install/">Docker-compose</a>. Please ensure you have these installed before proceeding.</p></li>
+</ul>
+<hr class="docutils" />
+</section>
+<section id="inference-method-1-deploy-from-pre-built-docker-image">
+<span id="id1"></span><h2>Inference: Method 1 - Deploy from pre-built Docker image<a class="headerlink" href="#inference-method-1-deploy-from-pre-built-docker-image" title="Permalink to this heading"></a></h2>
+<p>Download and unzip the file <code class="docutils literal notranslate"><span class="pre">klass2-final-deployment-inference.zip</span></code>, and ensure files are in the following directory structure, creating all the directories as needed:</p>
+<section id="directory-structure">
+<h3>Directory Structure<a class="headerlink" href="#directory-structure" title="Permalink to this heading"></a></h3>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>└── 📁klass2
+    └── docker-compose.yml
+    └── .env
+    └── 📁klass2-dashboard.tar
+└── 📁vol_mount
+    └── 📁audio
+        └── test_audio_2.wav
+        └── 📁audio_folder
+            └── test_audio_1.wav
+    └── 📁db
+    └── 📁logs
+    └── 📁model_checkpoints
+        └── 📁wavlm
+        └── 📁wavlm_aug
+        └── 📁wavlm_both
+    └── 📁output_rttm
+    └── 📁output_seg
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>see <a class="reference internal" href="readme-inference_module.html#readme-inference-module"><span class="std std-ref">inference module page</span></a> for detailed description of each file and folder</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">klass/</span></code> - Place <code class="docutils literal notranslate"><span class="pre">klass2-dashboard.tar</span></code> and <code class="docutils literal notranslate"><span class="pre">docker-compose.yml</span></code> here</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">vol_mount/model_checkpoints/</span></code> - Place your models checkpoint folders here</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">vol_mount/output_rttm/</span></code> - RTTM inference results will be saved here</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">vol_mount/output_seg/</span></code> - SEGMENT inference results will be saved here</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">vol_mount/db/</span></code> - App saves job history here; delete contents of each subfolder to reset the database</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">vol_mount/logs/</span></code> - App saves logs here</p></li>
+</ul>
+<p>Note:</p>
+<blockquote>
+<div><p>You may wish to use the below commands to generate the directories:</p>
+</div></blockquote>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>mkdir<span class="w"> </span>-p<span class="w"> </span>./klass
+$<span class="w"> </span>mkdir<span class="w"> </span>-p<span class="w"> </span>./vol_mount/model_checkpoints
+$<span class="w"> </span>mkdir<span class="w"> </span>-p<span class="w"> </span>./vol_mount/output_rttm
+$<span class="w"> </span>mkdir<span class="w"> </span>-p<span class="w"> </span>./vol_mount/output_seg
+$<span class="w"> </span>mkdir<span class="w"> </span>-p<span class="w"> </span>./vol_mount/logs
+$<span class="w"> </span>mkdir<span class="w"> </span>-p<span class="w"> </span>./vol_mount/db/redis_results_backend
+$<span class="w"> </span>mkdir<span class="w"> </span>-p<span class="w"> </span>./vol_mount/db/rabbitmq_broker
+$<span class="w"> </span>mkdir<span class="w"> </span>-p<span class="w"> </span>./vol_mount/db/flower_dashboard
+</pre></div>
+</div>
+</section>
+<section id="set-directory-permissions">
+<h3>Set directory permissions<a class="headerlink" href="#set-directory-permissions" title="Permalink to this heading"></a></h3>
+<p>Our <code class="docutils literal notranslate"><span class="pre">docker-compose.yml</span></code> specifies that the docker images are running as non-root users (specifically, user <code class="docutils literal notranslate"><span class="pre">osdklass</span></code>, user id <code class="docutils literal notranslate"><span class="pre">2222</span></code>, group <code class="docutils literal notranslate"><span class="pre">osdklass</span></code>, group id <code class="docutils literal notranslate"><span class="pre">2222</span></code>), for better security.</p>
+<p>Thus you will need to set permissions for the <code class="docutils literal notranslate"><span class="pre">vol_mount</span></code> directory so that the containers are able to access them properly:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create a user:group osdklass:osdklass (UID 2222:GID 2222)</span>
+<span class="c1"># to match the user:group in the Docker containers</span>
+$<span class="w"> </span>sudo<span class="w"> </span>groupadd<span class="w"> </span>-g<span class="w"> </span><span class="m">2222</span><span class="w"> </span>osdklass
+$<span class="w"> </span>sudo<span class="w"> </span>useradd<span class="w"> </span>-u<span class="w"> </span><span class="m">2222</span><span class="w"> </span>-g<span class="w"> </span><span class="m">2222</span><span class="w"> </span>-m<span class="w"> </span>osdklass
+
+<span class="c1"># Set directory permissions to 770 (read, write, and execute for owner and group)</span>
+$<span class="w"> </span>sudo<span class="w"> </span>chmod<span class="w"> </span>-R<span class="w"> </span><span class="m">770</span><span class="w"> </span>./klass2<span class="w"> </span>./vol_mount
+
+<span class="c1"># Set the owner and group of the volume mount directories to 2222:2222</span>
+$<span class="w"> </span>sudo<span class="w"> </span>chown<span class="w"> </span>-R<span class="w"> </span><span class="m">2222</span>:2222<span class="w"> </span>./klass2<span class="w"> </span>./vol_mount
+
+<span class="c1"># Set the owner and group specifically for RabbitMQ which runs as UID 999:GID 999</span>
+$<span class="w"> </span>sudo<span class="w"> </span>chown<span class="w"> </span>-R<span class="w"> </span><span class="m">999</span>:999<span class="w"> </span>./vol_mount/db/rabbitmq_broker
+</pre></div>
+</div>
+</section>
+<section id="dotenv-file">
+<span id="readme-01-env-setup-dotenv"></span><h3>Dotenv file<a class="headerlink" href="#dotenv-file" title="Permalink to this heading"></a></h3>
+<p>The <code class="docutils literal notranslate"><span class="pre">.env</span></code> file stores the following variables, in the event that you need to create your own.</p>
+<p>These are for the creation and accessing of the RabbitMQ message broker that handles task management and routing.</p>
+<p>You can use any other password of your preference.</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>RABBIT_USER=admin
+RABBIT_PWD=mypass
+</pre></div>
+</div>
+</section>
+<section id="import-docker-image">
+<h3>Import Docker Image<a class="headerlink" href="#import-docker-image" title="Permalink to this heading"></a></h3>
+<p>Import the Docker image TAR archive <code class="docutils literal notranslate"><span class="pre">klass2-dashboard.tar</span></code> into your local Docker repository:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>docker<span class="w"> </span>load<span class="w"> </span>-i<span class="w"> </span>klass2-dashboard.tar
+$<span class="w"> </span>docker<span class="w"> </span>images<span class="w">  </span><span class="c1"># Check if the image is registered, you should see klass2-dashboard:latest</span>
+REPOSITORY<span class="w">             </span>TAG<span class="w">            </span>IMAGE<span class="w"> </span>ID<span class="w">       </span>CREATED<span class="w">        </span>SIZE
+klass2-dashboard<span class="w">       </span>latest<span class="w">         </span>4bad4d5e8fe3<span class="w">   </span><span class="m">2</span><span class="w"> </span>hours<span class="w"> </span>ago<span class="w">    </span><span class="m">9</span>.17GB
+</pre></div>
+</div>
+</section>
+<section id="edit-docker-compose-yml-for-windows-deployment">
+<h3>Edit <code class="docutils literal notranslate"><span class="pre">docker-compose.yml</span></code> for Windows deployment<a class="headerlink" href="#edit-docker-compose-yml-for-windows-deployment" title="Permalink to this heading"></a></h3>
+<p>If you are deploying on a Windows system, you will need to make this change in <code class="docutils literal notranslate"><span class="pre">docker-compose.yml</span></code>.</p>
+<p>No change is required for Linux/Mac.</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="c1"># change from this:</span>
+<span class="nt">volumes</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">../vol_mount/db/rabbitmq_broker:/var/lib/rabbitmq/mnesia</span>
+
+<span class="c1"># to this:</span>
+<span class="nt">volumes</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">../vol_mount/db/rabbitmq_broker:/var/lib/rabbitmq</span>
+</pre></div>
+</div>
+</section>
+<section id="launch-the-deployment">
+<h3>Launch the deployment<a class="headerlink" href="#launch-the-deployment" title="Permalink to this heading"></a></h3>
+<p>In the <code class="docutils literal notranslate"><span class="pre">./klass2</span></code> directory, execute the following command to start the app:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>docker-compose<span class="w"> </span>up<span class="w"> </span>-d<span class="w"> </span>--build
+
+<span class="c1"># to check that the containers have spun up</span>
+$<span class="w"> </span>docker<span class="w"> </span>ps
+</pre></div>
+</div>
+<p>To stop the app, use:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>docker-compose<span class="w"> </span>down
+</pre></div>
+</div>
+<hr class="docutils" />
+</section>
+</section>
+<section id="inference-method-2-build-your-own-image-optional">
+<span id="readme-env-setup-source-repo"></span><h2>Inference Method 2: Build your own Image (OPTIONAL)<a class="headerlink" href="#inference-method-2-build-your-own-image-optional" title="Permalink to this heading"></a></h2>
+<p>This method is mostly similar to Method 1, but instead, the <code class="docutils literal notranslate"><span class="pre">./klass2-final-deployment/klass2</span></code> directory will contain the source code, and <code class="docutils literal notranslate"><span class="pre">docker-compose.yml</span></code> will be inside it.</p>
+<p>Unzip the file <code class="docutils literal notranslate"><span class="pre">klass2-final-deployment-inference-source-code.zip</span></code> and go to the directory containing the unzipped directory</p>
+<section id="prepare-vol-mount-directory-structure">
+<h3>Prepare <code class="docutils literal notranslate"><span class="pre">vol_mount</span></code> directory structure<a class="headerlink" href="#prepare-vol-mount-directory-structure" title="Permalink to this heading"></a></h3>
+<p>Set up the <code class="docutils literal notranslate"><span class="pre">vol_mount</span></code> directory the same way as per Method 1, alongside the <code class="docutils literal notranslate"><span class="pre">klass2</span></code> directory.</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>└── klass2-final-deployment/
+    ├── klass2/
+    └── vol_mount/
+</pre></div>
+</div>
+<p>Also set the directory permissions as described in Method 1.</p>
+</section>
+<section id="id2">
+<h3>Launch the deployment<a class="headerlink" href="#id2" title="Permalink to this heading"></a></h3>
+<p>In the <code class="docutils literal notranslate"><span class="pre">klass2</span></code> directory, execute the following command to start the app. The <code class="docutils literal notranslate"><span class="pre">--build</span></code> tells Docker to build from source:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span><span class="nb">cd</span><span class="w"> </span>./klass2-final-deployment/klass2
+$<span class="w"> </span>docker-compose<span class="w"> </span>up<span class="w"> </span>-d<span class="w"> </span>--build
+</pre></div>
+</div>
+<p>To stop the app, use:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>docker-compose<span class="w"> </span>down
+</pre></div>
+</div>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="readme-model_training.html" class="btn btn-neutral float-left" title="Data Pipeline &amp; Model Training" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="readme-inference_module.html" class="btn btn-neutral float-right" title="Inference Module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, aiap.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
