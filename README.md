@@ -1,2 +1,2 @@
-# OverlappedSpeakerDetection
+# OverlappedSpeechDetection
 OSD
