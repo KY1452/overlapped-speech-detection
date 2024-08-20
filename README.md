@@ -5,7 +5,7 @@
 
 # Speaker Counting using WavLM
 
-This repository contains the code and documentation for a final year project that focuses on **speaker counting** using machine learning techniques. The project implements various models and experiments with different datasets to improve the accuracy of detecting the number of speakers in overlapping speech segments.
+This repository contains the code and documentation for a final year thesis project (by Kanishk Yadav) that focuses on **speaker counting** using deep learning techniques. The project implements various models and experiments with different datasets to improve the accuracy of detecting the number of speakers (0, 1, >=2) in overlapping speech segments.
 
 ## Table of Contents
 
